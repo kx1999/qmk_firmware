@@ -184,7 +184,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // 25-34 = Static Gradient
 
 const uint8_t RGBLED_BREATHING_INTERVALS[] PROGMEM = {30, 15, 8, 4};
-const uint8_t RGBLED_RAINBOW_MOOD_INTERVALS[] PROGMEM = {40, 20, 10};
+const uint8_t RGBLED_RAINBOW_MOOD_INTERVALS[] PROGMEM = {60, 30, 15};
 const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {30, 15, 8};
 const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {60, 50, 40};
 const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {60, 45, 30};

@@ -15,8 +15,4 @@ TAP_DANCE_ENABLE = yes
 
 SLEEP_LED_ENABLE = no      # Breathing sleep LED during USB suspend
 
-ifeq ($(strip $(KEYBOARD)), iris/rev3)
-    BOOTLOADER = dfu
-else
-    BOOTLOADER = caterina
-endif
+BOOTLOADER = atmel-dfu
