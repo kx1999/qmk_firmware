@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
                ,    ,LEFT,DOWN,RGHT,UNDS,               EQL ,LEFT,DOWN,RGHT,VOLD,PGUP,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-               ,    ,    ,    ,    ,PIPE,    ,     RSET,BSLS,CALC,MYCM,    ,INS ,PGDN,
+               ,    ,    ,    ,    ,PIPE,    ,         ,BSLS,CALC,MYCM,    ,INS ,PGDN,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
                                  ,    ,    ,             ,    ,
     //                      `----+----+----'        `----+----+----'
@@ -407,6 +407,9 @@ void hyp_f (qk_tap_dance_state_t *state, void *user_data) {
     case QUAD_TAP:
       register_code(KC_PWR);
       unregister_code(KC_PWR);
+      break;
+    case QUIN_TAP:
+      reset_keyboard();
       break;
   }
 }
