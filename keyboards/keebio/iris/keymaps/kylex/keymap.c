@@ -21,7 +21,6 @@ enum custom_keycodes {
 #define KC_         KC_TRNS
 #define _______     KC_TRNS
 
-#define KC_RST      RESET                                                                                                      // QMK Reset Keyboard
 #define KC_BACK     KC_WBAK                                                                                                    // Back
 #define KC_FRWD     KC_WFWD                                                                                                    // Forward
 #define KC_CSFT     SFT_T(KC_CAPSLOCK)                                                                                         // Hold for Shift, tap for Caps Lock
@@ -36,7 +35,6 @@ enum custom_keycodes {
 #define KC_MDIA     TD(MDIA)                                                                                                   // Tap 1 for Play/Pause Media, Tap 2 to Toggle RGB Underglow
 #define KC_HYP      TD(HY)                                                                                                     // HYP: Tap 1 for Printscreen, Tap 2 for Task Manager, Tap 3 to Ctrl+Alt+Del, Tap 4 to Sleep, Tap 5 to Shut Down, Tap 1 and Hold for Meh modifier, Tap 2 and Hold for Hyper modifier
 #define KC_DSCR     TD(DC)                                                                                                     // DSCR: Tap 1 for Discord mute, Tap 2 for Discord deafen, Tap 3 to Toggle _GAME layer
-#define KC_RSET 	RESET
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -76,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
                ,HOME,SPUP,BTAB,FTAB,LPRN,               RPRN,    ,    ,    ,    ,    ,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-               ,END ,SPDN,BACK,FRWD,LBRC,RSET,         ,RBRC,    ,    ,    ,    ,    ,
+               ,END ,SPDN,BACK,FRWD,LBRC,    ,         ,RBRC,    ,    ,    ,    ,    ,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
                                  ,    ,    ,             ,    ,    
     //                      `----+----+----'        `----+----+----'
@@ -186,7 +184,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // 25-34 = Static Gradient
 
 const uint8_t RGBLED_BREATHING_INTERVALS[] PROGMEM = {30, 15, 8, 4};
-const uint8_t RGBLED_RAINBOW_MOOD_INTERVALS[] PROGMEM = {40, 20, 10};
+const uint8_t RGBLED_RAINBOW_MOOD_INTERVALS[] PROGMEM = {60, 30, 15};
 const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {30, 15, 8};
 const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {60, 50, 40};
 const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {60, 45, 30};
@@ -205,7 +203,7 @@ void rgblight_init_real(void) {
   if (runonce && timer_elapsed(delay_runonce) > INIT_DELAY) {
     runonce = false;
     rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(11);
+    rgblight_mode_noeeprom(9);
     rgblight_sethsv_noeeprom(249/*350*/, 255, 255);
   }
 }
@@ -241,7 +239,7 @@ void led_set_user(uint8_t usb_led) {
         rgblight_sethsv_noeeprom(0, 0, 255);
         break;
       default:
-        rgblight_mode_noeeprom(11);
+        rgblight_mode_noeeprom(9);
         rgblight_sethsv_noeeprom(0, 0, 255);
         break;
       }
@@ -257,7 +255,7 @@ void led_set_user(uint8_t usb_led) {
         rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
         break;
       case _QWERTY:
-        rgblight_mode_noeeprom(11);
+        rgblight_mode_noeeprom(9);
         rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
         break;
       case _GAME:
@@ -297,10 +295,10 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
       case _QWERTY:
         if (caps) {
-          rgblight_mode_noeeprom(11);
+          rgblight_mode_noeeprom(9);
           rgblight_sethsv_noeeprom(0, 0, 255);
         } else {
-          rgblight_mode_noeeprom(11);
+          rgblight_mode_noeeprom(9);
           rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
         }
         break;
@@ -315,7 +313,7 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
       case _NUMPAD:
         if (caps) {
-          rgblight_mode_noeeprom(1);
+          rgblight_mode_noeeprom(24);
           rgblight_sethsv_noeeprom(0, 0, 255);
         } else {
           rgblight_mode_noeeprom(24);
@@ -407,6 +405,9 @@ void hyp_f (qk_tap_dance_state_t *state, void *user_data) {
     case QUAD_TAP:
       register_code(KC_PWR);
       unregister_code(KC_PWR);
+      break;
+    case QUIN_TAP:
+      reset_keyboard();
       break;
   }
 }
