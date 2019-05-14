@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    ,----+----+----+----+----+----.              ,----+----+----+----+----+----.
                ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
-               ,NUMP,WTXT,TTXT,    ,LCBR,               RCBR,    ,    ,    ,    ,    ,
+               ,NUMP,    ,    ,    ,LCBR,               RCBR,    ,    ,    ,    ,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
                ,HOME, SUP,BTAB,FTAB,LPRN,               RPRN,    ,    ,    ,    ,    ,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
@@ -85,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    ,----+----+----+----+----+----.              ,----+----+----+----+----+----.
            F12 , F1 , F2 , F3 , F4 , F5 ,                F6 , F7 , F8 , F9 ,F10 ,F11 ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
-               ,    ,    , UP ,    ,MINS,               PLUS,MPRV, UP ,MNXT,VOLU,    ,
+               ,WTXT,TTXT, UP ,    ,MINS,               PLUS,MPRV, UP ,MNXT,VOLU,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
                ,    ,LEFT,DOWN,RGHT,UNDS,               EQL ,LEFT,DOWN,RGHT,VOLD,PGUP,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
@@ -283,43 +283,45 @@ void led_set_user(uint8_t usb_led) {
   }
   old_usb_led = usb_led;
 
-  if (caps) {
-    switch (layer) {
-      case _RAISE:
-        rgblight_mode_noeeprom(20);
-        rgblight_sethsv_noeeprom(0, 0, 255);
-        break;
-      case _LOWER:
-        rgblight_mode_noeeprom(19);
-        rgblight_sethsv_noeeprom(0, 0, 255);
-        break;
-      default:
-        rgblight_mode_noeeprom(9);
-        rgblight_sethsv_noeeprom(0, 0, 255);
-        break;
+  if (!ttxt) { 
+    if (caps) {
+      switch (layer) {
+        case _RAISE:
+          rgblight_mode_noeeprom(20);
+          rgblight_sethsv_noeeprom(0, 0, 255);
+          break;
+        case _LOWER:
+          rgblight_mode_noeeprom(19);
+          rgblight_sethsv_noeeprom(0, 0, 255);
+          break;
+        default:
+          rgblight_mode_noeeprom(9);
+          rgblight_sethsv_noeeprom(0, 0, 255);
+          break;
+        }
+    } else if (!caps) {
+      switch (layer) {
+        case _RAISE:
+          rgblight_mode_noeeprom(20);
+          rgblight_sethsv_noeeprom(100/*140*/, 255, 255);
+          break;
+        case _LOWER:
+          rgblight_mode_noeeprom(19);
+          rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
+          break;
+        case _QWERTY:
+          rgblight_mode_noeeprom(9);
+          rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          break;
+        case _GAME:
+          rgblight_mode_noeeprom(6);
+          rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          break;
+        case _NUMPAD:
+          rgblight_mode_noeeprom(24);
+          rgblight_sethsv_noeeprom(0, 255, 255);
+          break;
       }
-  } else if (!caps) {
-    switch (layer) {
-      case _RAISE:
-        rgblight_mode_noeeprom(20);
-        rgblight_sethsv_noeeprom(100/*140*/, 255, 255);
-        break;
-      case _LOWER:
-        rgblight_mode_noeeprom(19);
-        rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
-        break;
-      case _QWERTY:
-        rgblight_mode_noeeprom(9);
-        rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-        break;
-      case _GAME:
-        rgblight_mode_noeeprom(6);
-        rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-        break;
-      case _NUMPAD:
-        rgblight_mode_noeeprom(24);
-        rgblight_sethsv_noeeprom(0, 255, 255);
-        break;
     }
   }
 }
@@ -328,7 +330,7 @@ uint32_t layer_state_set_user(uint32_t state) {
   layer = biton32(state);
     switch (layer) {
       case _RAISE:
-        if (caps) {
+        if (caps && !ttxt) {
           rgblight_mode_noeeprom(20);
           rgblight_sethsv_noeeprom(0, 0, 255);
         } else {
@@ -337,7 +339,7 @@ uint32_t layer_state_set_user(uint32_t state) {
         }
         break;
       case _LOWER:
-        if (caps) {
+        if (caps && !ttxt) {
           rgblight_mode_noeeprom(19);
           rgblight_sethsv_noeeprom(0, 0, 255);
         } else {
@@ -346,7 +348,7 @@ uint32_t layer_state_set_user(uint32_t state) {
         }
         break;
       case _QWERTY:
-        if (caps) {
+        if (caps && !ttxt) {
           rgblight_mode_noeeprom(9);
           rgblight_sethsv_noeeprom(0, 0, 255);
         } else {
@@ -355,7 +357,7 @@ uint32_t layer_state_set_user(uint32_t state) {
         }
         break;
       case _GAME:
-        if (caps) {
+        if (caps && !ttxt) {
           rgblight_mode_noeeprom(6);
           rgblight_sethsv_noeeprom(0, 0, 255);
         } else {
@@ -364,7 +366,7 @@ uint32_t layer_state_set_user(uint32_t state) {
         }
         break;
       case _NUMPAD:
-        if (caps) {
+        if (caps && !ttxt) {
           rgblight_mode_noeeprom(24);
           rgblight_sethsv_noeeprom(0, 0, 255);
         } else {
