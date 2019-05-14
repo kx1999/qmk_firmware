@@ -117,6 +117,7 @@ bool dn = false;
 const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
 static uint16_t timer;
 bool caps = false;
+
 static struct {
     bool on;
     bool first;
@@ -232,7 +233,7 @@ const uint8_t RGBLED_RAINBOW_MOOD_INTERVALS[] PROGMEM = {60, 30, 15};
 const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {30, 15, 8};
 const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {60, 50, 40};
 const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {60, 45, 30};
-const uint16_t RGBLED_GRADIENT_RANGES[] PROGMEM = {180, 120, 90, 60, 45};
+const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {180, 120, 90, 60, 45};
 
 uint8_t layer = _QWERTY;
 int delay_runonce;

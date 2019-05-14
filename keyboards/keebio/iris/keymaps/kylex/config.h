@@ -1,8 +1,7 @@
 #define USE_SERIAL
 #define EE_HANDS
 
-#define NO_ACTION_MACRO
-#define NO_ACTION_FUNCTION
+#define NO_ACTION_ONESHOT
 
 #undef RGBLED_NUM
 #define RGBLED_NUM 12
@@ -21,3 +20,8 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
 #define FORCE_NKRO
+
+#undef QMK_ESC_OUTPUT
+#undef QMK_ESC_INPUT
+#define QMK_ESC_OUTPUT D2
+#define QMK_ESC_INPUT F1
