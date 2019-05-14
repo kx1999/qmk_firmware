@@ -11,16 +11,19 @@ enum iris_layers {
 };
 
 enum custom_keycodes {
-  UP = SAFE_RANGE,
-  DN = 0,
-  MDIA,
-  HY,
+	KC_SUP = SAFE_RANGE,
+  KC_SDN,
+  KC_TTXT,
+  KC_WTXT,
+};
+
+enum {
+  HY = 0,
   DC,
+  MDIA,
 };
 
 #define KC_         KC_TRNS
-#define _______     KC_TRNS
-
 #define KC_BACK     KC_WBAK                                                                                                    // Back
 #define KC_FRWD     KC_WFWD                                                                                                    // Forward
 #define KC_CSFT     SFT_T(KC_CAPSLOCK)                                                                                         // Hold for Shift, tap for Caps Lock
@@ -30,8 +33,6 @@ enum custom_keycodes {
 #define KC_NUMP     TG(_NUMPAD)                                                                                                // Toggle _NUMPAD layer
 #define KC_FTAB     LCTL(KC_TAB)                                                                                               // Next tab
 #define KC_BTAB     LCTL(LSFT(KC_TAB))                                                                                         // Previous tab
-#define KC_SPUP     UP                                                                                                         // Spam up arrow
-#define KC_SPDN     DN                                                                                                         // Spam down arrow
 #define KC_MDIA     TD(MDIA)                                                                                                   // Tap 1 for Play/Pause Media, Tap 2 to Toggle RGB Underglow
 #define KC_HYP      TD(HY)                                                                                                     // HYP: Tap 1 for Printscreen, Tap 2 for Task Manager, Tap 3 to Ctrl+Alt+Del, Tap 4 to Sleep, Tap 5 to Shut Down, Tap 1 and Hold for Meh modifier, Tap 2 and Hold for Hyper modifier
 #define KC_DSCR     TD(DC)                                                                                                     // DSCR: Tap 1 for Discord mute, Tap 2 for Discord deafen, Tap 3 to Toggle _GAME layer
@@ -70,11 +71,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    ,----+----+----+----+----+----.              ,----+----+----+----+----+----.
                ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
-               ,NUMP,    ,    ,    ,LCBR,               RCBR,    ,    ,    ,    ,    ,
+               ,NUMP,WTXT,TTXT,    ,LCBR,               RCBR,    ,    ,    ,    ,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
-               ,HOME,SPUP,BTAB,FTAB,LPRN,               RPRN,    ,    ,    ,    ,    ,
+               ,HOME, SUP,BTAB,FTAB,LPRN,               RPRN,    ,    ,    ,    ,    ,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-               ,END ,SPDN,BACK,FRWD,LBRC,    ,         ,RBRC,    ,    ,    ,    ,    ,
+               ,END , SDN,BACK,FRWD,LBRC,    ,         ,RBRC,    ,    ,    ,    ,    ,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
                                  ,    ,    ,             ,    ,    
     //                      `----+----+----'        `----+----+----'
@@ -116,8 +117,39 @@ bool dn = false;
 const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
 static uint16_t timer;
 bool caps = false;
+static struct {
+    bool on;
+    bool first;
+  } wtxt = {false, false};
+static bool ttxt = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+	if (wtxt.on) {
+    if (record->event.pressed) {
+      switch (keycode) {
+        case KC_A...KC_0:
+        case KC_SPC:
+          if (wtxt.first) {
+            wtxt.first = false;
+          } else {
+            send_char(' ');
+          }
+          break;
+        case KC_ENT:
+          wtxt.first = true;
+          break;
+        case KC_BSPC:
+          send_char('\b'); // backspace
+          break;
+      }
+    }
+  }
+	if (ttxt) {
+    if (record->event.pressed) {
+      tap_code(KC_CAPS);
+    }
+	}
+
   switch (keycode) {
     case KC_LOWR:
       if (record->event.pressed) {
@@ -153,7 +185,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return true;
       break;
-    case UP:
+    case KC_SUP:
       if (record->event.pressed) {
         up = true;
       } else {
@@ -161,7 +193,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case DN:
+    case KC_SDN:
       if (record->event.pressed) {
         dn = true;
       } else {
@@ -169,6 +201,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+    case KC_WTXT:
+      if (record->event.pressed) {
+        wtxt.on = !wtxt.on;
+        wtxt.first = true;
+      }
+      return false;
+    case KC_TTXT:
+     	if (record->event.pressed) {
+     	  ttxt = !ttxt;
+     	  tap_code(KC_CAPS);
+     	}
+     	return false;
   }
   return true;
 }
