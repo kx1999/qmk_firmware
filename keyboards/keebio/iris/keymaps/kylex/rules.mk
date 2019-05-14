@@ -15,4 +15,4 @@ TAP_DANCE_ENABLE = yes
 
 SLEEP_LED_ENABLE = no      # Breathing sleep LED during USB suspend
 
-BOOTLOADER = atmel-dfu
+BOOTLOADER = qmk-dfu
