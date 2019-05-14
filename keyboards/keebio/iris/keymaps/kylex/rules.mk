@@ -1,18 +1,20 @@
-BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE = no        # Mouse keys(+4700)
-EXTRAKEY_ENABLE = yes       # Audio control and System control(+450)
-CONSOLE_ENABLE = no         # Console for debug(+400)
-COMMAND_ENABLE = no         # Commands for debug and configuration
-NKRO_ENABLE = yes           # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
-BACKLIGHT_ENABLE = yes      # Enable keyboard backlight functionality
-MIDI_ENABLE = no            # MIDI controls
-AUDIO_ENABLE = no           # Audio output on port C6
-UNICODE_ENABLE = no         # Unicode
-BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
-RGBLIGHT_ENABLE = yes       # Enable WS2812 RGB underlight.
-API_SYSEX_ENABLE = no
-TAP_DANCE_ENABLE = yes
+BOOTMAGIC_ENABLE = no       			# Virtual DIP switch configuration(+1000)
+MOUSEKEY_ENABLE = no        			# Mouse keys(+4700)
+EXTRAKEY_ENABLE = yes       			# Audio control and System control(+450)
+CONSOLE_ENABLE = no         			# Console for debug(+400)
+COMMAND_ENABLE = no         			# Commands for debug and configuration
+NKRO_ENABLE = yes           			# N-key Rollover
+AUDIO_ENABLE = no           			# Audio output on port C6
+RGBLIGHT_ENABLE = yes       			# Enable WS2812 RGB underlight
+LEADER_ENABLE = no 						# Enable leader key chording
+MIDI_ENABLE = no            			# MIDI control
+UNICODE_ENABLE = no         			# Unicode
+BLUETOOTH = no 							# Bluetooth
+SPLIT_KEYBOARD = yes					# Split keyboard
+WAIT_FOR_USB = yes						# Forces the keyboard to wait for a USB connection to be established before it starts up
+NO_USB_STARTUP_CHECK = yes				# Disables usb suspend check after keyboard startup
+TAP_DANCE_ENABLE = yes					# Enables Tap-Dance functionality
+BACKLIGHT_ENABLE = yes      			# Enable keyboard backlight functionality
+LINK_TIME_OPTIMIZATION_ENABLE = yes		# Enables Link Time Optimization (LTO) when compiling the keyboard
 
-SLEEP_LED_ENABLE = no      # Breathing sleep LED during USB suspend
-
-BOOTLOADER = qmk-dfu
+BOOTLOADER = qmk-dfu					# Defines bootloader
