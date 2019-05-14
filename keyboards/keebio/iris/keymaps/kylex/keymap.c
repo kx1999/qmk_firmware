@@ -211,7 +211,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_TTXT:
      	if (record->event.pressed) {
      	  ttxt = !ttxt;
-     	  tap_code(KC_CAPS);
+        tap_code(KC_CAPS);
+        if (caps) {
+          tap_code(KC_CAPS);
+        }
      	}
      	return false;
   }
@@ -274,6 +277,13 @@ void matrix_scan_user(void) {
 void led_set_user(uint8_t usb_led) {
   static uint8_t old_usb_led = 0;
   if ((usb_led & (1 << USB_LED_CAPS_LOCK)) && !(old_usb_led & (1 << USB_LED_CAPS_LOCK))) {
+    caps = true;
+  } else if (!(usb_led & (1 << USB_LED_CAPS_LOCK)) && (old_usb_led & (1 << USB_LED_CAPS_LOCK))) {
+    caps = false;
+  }
+  old_usb_led = usb_led;
+
+  if (caps) {
     switch (layer) {
       case _RAISE:
         rgblight_mode_noeeprom(20);
@@ -288,8 +298,7 @@ void led_set_user(uint8_t usb_led) {
         rgblight_sethsv_noeeprom(0, 0, 255);
         break;
       }
-    caps = true;
-  } else if (!(usb_led & (1 << USB_LED_CAPS_LOCK)) && (old_usb_led & (1 << USB_LED_CAPS_LOCK))) {
+  } else if (!caps) {
     switch (layer) {
       case _RAISE:
         rgblight_mode_noeeprom(20);
@@ -312,9 +321,7 @@ void led_set_user(uint8_t usb_led) {
         rgblight_sethsv_noeeprom(0, 255, 255);
         break;
     }
-    caps = false;
   }
-  old_usb_led = usb_led;
 }
 
 uint32_t layer_state_set_user(uint32_t state) {
