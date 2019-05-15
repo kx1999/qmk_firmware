@@ -111,12 +111,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-int prev = 0;
-bool up = false;
-bool dn = false;
+static int prev = 0;
+static bool up = false;
+static bool dn = false;
 const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
 static uint16_t timer;
-bool caps = false;
+static bool caps = false;
 
 static struct {
     bool on;
@@ -238,9 +238,9 @@ const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {60, 50, 40};
 const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {60, 45, 30};
 const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {180, 120, 90, 60, 45};
 
-uint8_t layer = _QWERTY;
-int delay_runonce;
-int INIT_DELAY = 100;
+static uint8_t layer = _QWERTY;
+static int delay_runonce;
+const int INIT_DELAY = 100;
 static bool runonce = true;
 
 void rgblight_wait(void) {
