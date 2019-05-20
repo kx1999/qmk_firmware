@@ -208,15 +208,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         wtxt.first = true;
       }
       return false;
+      break;
     case KC_TTXT:
      	if (record->event.pressed) {
      	  ttxt = !ttxt;
-        tap_code(KC_CAPS);
         if (caps) {
           tap_code(KC_CAPS);
         }
+        tap_code(KC_CAPS);
      	}
      	return false;
+      break;
   }
   return true;
 }
