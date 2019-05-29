@@ -316,7 +316,7 @@ void led_set_user(uint8_t usb_led) {
           rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
           break;
         case _GAME:
-          rgblight_mode_noeeprom(6);
+          rgblight_mode_noeeprom(9);
           rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
           break;
         case _NUMPAD:
@@ -360,10 +360,10 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
       case _GAME:
         if (caps && !ttxt) {
-          rgblight_mode_noeeprom(6);
+          rgblight_mode_noeeprom(9);
           rgblight_sethsv_noeeprom(0, 0, 255);
         } else {
-          rgblight_mode_noeeprom(6);
+          rgblight_mode_noeeprom(9);
           rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
         }
         break;
