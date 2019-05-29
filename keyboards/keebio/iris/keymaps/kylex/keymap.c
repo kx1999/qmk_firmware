@@ -238,7 +238,7 @@ const uint8_t RGBLED_RAINBOW_MOOD_INTERVALS[] PROGMEM = {60, 30, 15};
 const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {30, 15, 8};
 const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {60, 50, 40};
 const uint8_t RGBLED_KNIGHT_INTERVALS[] PROGMEM = {60, 45, 30};
-const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {180, 120, 90, 60, 45};
+const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {0, 0, 0, 0, 0};
 
 static uint8_t layer = _QWERTY;
 static int delay_runonce;
@@ -253,8 +253,8 @@ void rgblight_init_real(void) {
   if (runonce && timer_elapsed(delay_runonce) > INIT_DELAY) {
     runonce = false;
     rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(9);
-    rgblight_sethsv_noeeprom(249/*350*/, 255, 255);
+    rgblight_mode_noeeprom(25/*9*/);
+    rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
   }
 }
 
@@ -297,7 +297,7 @@ void led_set_user(uint8_t usb_led) {
           rgblight_sethsv_noeeprom(0, 0, 255);
           break;
         default:
-          rgblight_mode_noeeprom(9);
+          rgblight_mode_noeeprom(25/*9*/);
           rgblight_sethsv_noeeprom(0, 0, 255);
           break;
         }
@@ -312,7 +312,7 @@ void led_set_user(uint8_t usb_led) {
           rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
           break;
         case _QWERTY:
-          rgblight_mode_noeeprom(9);
+          rgblight_mode_noeeprom(25/*9*/);
           rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
           break;
         case _GAME:
@@ -351,10 +351,10 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
       case _QWERTY:
         if (caps && !ttxt) {
-          rgblight_mode_noeeprom(9);
+          rgblight_mode_noeeprom(25/*9*/);
           rgblight_sethsv_noeeprom(0, 0, 255);
         } else {
-          rgblight_mode_noeeprom(9);
+          rgblight_mode_noeeprom(25/*9*/);
           rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
         }
         break;
