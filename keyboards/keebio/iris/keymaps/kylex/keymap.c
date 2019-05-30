@@ -117,6 +117,7 @@ static bool dn = false;
 const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
 static uint16_t timer;
 static bool caps = false;
+static bool reset = false;
 
 static struct {
     bool on;
@@ -218,6 +219,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code(KC_CAPS);
      	}
      	return false;
+      break;
+    case KC_ENT:
+      if (record->event.pressed) {
+        if (reset) {
+          SEND_STRING("make keebio/iris/rev3:kylex:dfu");
+          tap_code(KC_ENTER);
+          reset_keyboard();
+        }
+      }
+      return true;
       break;
   }
   return true;
@@ -462,9 +473,6 @@ void hyp_f (qk_tap_dance_state_t *state, void *user_data) {
       register_code(KC_PWR);
       unregister_code(KC_PWR);
       break;
-    case QUIN_TAP:
-      reset_keyboard();
-      break;
   }
 }
 
@@ -500,7 +508,7 @@ void dsc_f (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_M);
       break;
     case SINGLE_HOLD: 
-      register_code(KC_LSHIFT);
+      reset = true;
       break;
     case DOUBLE_TAP:
       register_code(KC_LSHIFT);
@@ -527,11 +535,6 @@ void dsc_f (qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void dsc_r (qk_tap_dance_state_t *state, void *user_data) {
-  switch (tap_state.state) {
-    case SINGLE_HOLD: 
-      unregister_code(KC_LSHIFT);
-      break;
-  }
 }
 
 void mdia_f (qk_tap_dance_state_t *state, void *user_data) {
