@@ -12,9 +12,10 @@ UNICODE_ENABLE = no         			# Unicode
 BLUETOOTH = no 							# Bluetooth
 SPLIT_KEYBOARD = yes					# Split keyboard
 WAIT_FOR_USB = no						# Forces the keyboard to wait for a USB connection to be established before it starts up
-NO_USB_STARTUP_CHECK = no				# Disables usb suspend check after keyboard startup
+NO_USB_STARTUP_CHECK = yes				# Disables usb suspend check after keyboard startup
 TAP_DANCE_ENABLE = yes					# Enables Tap-Dance functionality
-BACKLIGHT_ENABLE = yes      			# Enable keyboard backlight functionality
+BACKLIGHT_ENABLE = no 	     			# Enable keyboard backlight functionality
 LINK_TIME_OPTIMIZATION_ENABLE = yes		# Enables Link Time Optimization (LTO) when compiling the keyboard
+API_SYSEX_ENABLE = no					# Future API functionality (leave disabled)
 
 BOOTLOADER = qmk-dfu					# Defines bootloader
