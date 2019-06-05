@@ -223,9 +223,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      	}
      	return false;
       break;
+    case KC_GRV:
+    	if (record->event.pressed) {
+    		reset = true;
+    	}
+    	return true;
+    	break;
     case KC_ENT:
       if (record->event.pressed) {
         if (reset) {
+        	tap_code(KC_BSPC);
           SEND_STRING("make keebio/iris/rev3:kylex:dfu");
           tap_code(KC_ENTER);
           #ifdef AUDIO_ENABLE
@@ -550,9 +557,6 @@ void dsc_f (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_LALT);
       unregister_code(KC_LGUI);
       unregister_code(KC_M);
-      break;
-    case SINGLE_HOLD: 
-      reset = true;
       break;
     case DOUBLE_TAP:
       register_code(KC_LSHIFT);
