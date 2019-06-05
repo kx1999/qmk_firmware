@@ -238,7 +238,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           #ifdef AUDIO_ENABLE
             PLAY_SONG(pt_disco);
           #endif
-          wait_ms(5000);
           reset_keyboard();
         }
       }
