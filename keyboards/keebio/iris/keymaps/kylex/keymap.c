@@ -36,6 +36,7 @@ enum {
 #define KC_MDIA     TD(MDIA)                                                                                                   // Tap 1 for Play/Pause Media, Tap 2 to Toggle RGB Underglow
 #define KC_HYP      TD(HY)                                                                                                     // HYP: Tap 1 for Printscreen, Tap 2 for Task Manager, Tap 3 to Ctrl+Alt+Del, Tap 4 to Sleep, Tap 5 to Shut Down, Tap 1 and Hold for Meh modifier, Tap 2 and Hold for Hyper modifier
 #define KC_DSCR     TD(DC)                                                                                                     // DSCR: Tap 1 for Discord mute, Tap 2 for Discord deafen, Tap 3 to Toggle _GAME layer
+#define KC_RSET			RESET
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -91,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
                ,    ,    ,    ,    ,PIPE,    ,         ,BSLS,CALC,MYCM,    ,INS ,PGDN,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
-                                 ,    ,    ,             ,    ,
+                                 ,    ,    ,             ,    ,RSET
     //                      `----+----+----'        `----+----+----'
     ),
 
@@ -117,7 +118,6 @@ static bool dn = false;
 const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
 static uint16_t timer;
 static bool caps = false;
-static bool reset = false;
 #ifdef AUDIO_ENABLE
   float pt_disco[][2] = SONG(PLATINUM_DISCO);
 #endif
@@ -223,20 +223,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      	}
      	return false;
       break;
-    case KC_ENT:
-      if (record->event.pressed) {
-        if (reset) {
-          SEND_STRING("make keebio/iris/rev3:kylex:dfu");
-          tap_code(KC_ENTER);
-          #ifdef AUDIO_ENABLE
-            PLAY_SONG(pt_disco);
-          #endif
-          wait_ms(5000);
-          reset_keyboard();
-        }
-      }
-      return true;
-      break;
   }
   return true;
 }
@@ -267,14 +253,18 @@ void rgblight_wait(void) {
 void rgblight_init_real(void) {
   if (runonce && timer_elapsed(delay_runonce) > INIT_DELAY) {
     runonce = false;
-    rgblight_enable_noeeprom();
-    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-    rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+    #ifdef RGBLIGHT_ENABLE
+      rgblight_enable_noeeprom();
+      rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+      rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+    #endif
   }
 }
 
 void matrix_init_user(void) {
-  rgblight_wait();
+  #ifdef RGBLIGHT_ENABLE
+    rgblight_wait();
+  #endif
 };
 
 void matrix_scan_user(void) {
@@ -304,39 +294,55 @@ void led_set_user(uint8_t usb_led) {
     if (caps) {
       switch (layer) {
         case _RAISE:
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
-          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(0, 0, 255);
+          #endif
           break;
         case _LOWER:
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
-          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(0, 0, 255);
+          #endif
           break;
         default:
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+            rgblight_sethsv_noeeprom(0, 0, 255);
+          #endif
           break;
         }
     } else if (!caps) {
       switch (layer) {
         case _RAISE:
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
-          rgblight_sethsv_noeeprom(100/*140*/, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(100/*140*/, 255, 255);
+          #endif
           break;
         case _LOWER:
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
-          rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
+          #endif
           break;
         case _QWERTY:
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-          rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          #endif
           break;
         case _GAME:
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
-          rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          #endif
           break;
         case _NUMPAD:
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
-          rgblight_sethsv_noeeprom(0, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
+            rgblight_sethsv_noeeprom(0, 255, 255);
+          #endif
           break;
       }
     }
@@ -348,47 +354,67 @@ uint32_t layer_state_set_user(uint32_t state) {
     switch (layer) {
       case _RAISE:
         if (caps && !ttxt) {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
-          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(0, 0, 255);
+          #endif
         } else {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
-          rgblight_sethsv_noeeprom(100/*140*/, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(100/*140*/, 255, 255);
+          #endif
         }
         break;
       case _LOWER:
         if (caps && !ttxt) {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
-          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(0, 0, 255);
+          #endif
         } else {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
-          rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
+          #endif
         }
         break;
       case _QWERTY:
         if (caps && !ttxt) {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+            rgblight_sethsv_noeeprom(0, 0, 255);
+          #endif
         } else {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-          rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          #endif
         }
         break;
       case _GAME:
         if (caps && !ttxt) {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
-          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+            rgblight_sethsv_noeeprom(0, 0, 255);
+          #endif
         } else {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
-          rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+          #endif
         }
         break;
       case _NUMPAD:
         if (caps && !ttxt) {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
-          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
+            rgblight_sethsv_noeeprom(0, 0, 255);
+          #endif
         } else {
-          rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
-          rgblight_sethsv_noeeprom(0, 255, 255);
+          #ifdef RGBLIGHT_ENABLE
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
+            rgblight_sethsv_noeeprom(0, 255, 255);
+          #endif
         }
         break;
     }
@@ -511,9 +537,6 @@ void dsc_f (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_LGUI);
       unregister_code(KC_M);
       break;
-    case SINGLE_HOLD: 
-      reset = true;
-      break;
     case DOUBLE_TAP:
       register_code(KC_LSHIFT);
       register_code(KC_LCTRL);
@@ -549,7 +572,12 @@ void mdia_f (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_MPLY);
       break;
     case DOUBLE_TAP:
-      rgblight_toggle_noeeprom();
+      #ifdef RGBLIGHT_ENABLE
+        rgblight_toggle_noeeprom();
+      #endif
+      #ifdef AUDIO_ENABLE
+        register_code(AU_TOG);
+      #endif
       break;
   }
 }
