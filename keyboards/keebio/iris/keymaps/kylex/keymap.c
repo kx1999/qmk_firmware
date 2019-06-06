@@ -36,6 +36,7 @@ enum {
 #define KC_MDIA     TD(MDIA)                                                                                                   // Tap 1 for Play/Pause Media, Tap 2 to Toggle RGB Underglow
 #define KC_HYP      TD(HY)                                                                                                     // HYP: Tap 1 for Printscreen, Tap 2 for Task Manager, Tap 3 to Ctrl+Alt+Del, Tap 4 to Sleep, Tap 5 to Shut Down, Tap 1 and Hold for Meh modifier, Tap 2 and Hold for Hyper modifier
 #define KC_DSCR     TD(DC)                                                                                                     // DSCR: Tap 1 for Discord mute, Tap 2 for Discord deafen, Tap 3 to Toggle _GAME layer
+#define KC_RSET			RESET
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -91,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
                ,    ,    ,    ,    ,PIPE,    ,         ,BSLS,CALC,MYCM,    ,INS ,PGDN,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
-                                 ,    ,    ,             ,    ,
+                                 ,    ,    ,             ,    ,RSET
     //                      `----+----+----'        `----+----+----'
     ),
 
@@ -117,7 +118,6 @@ static bool dn = false;
 const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
 static uint16_t timer;
 static bool caps = false;
-static bool reset = false;
 #ifdef AUDIO_ENABLE
   float pt_disco[][2] = SONG(PLATINUM_DISCO);
 #endif
@@ -222,26 +222,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code(KC_CAPS);
      	}
      	return false;
-      break;
-    case KC_GRV:
-    	if (record->event.pressed) {
-    		reset = true;
-    	}
-    	return true;
-    	break;
-    case KC_ENT:
-      if (record->event.pressed) {
-        if (reset) {
-        	tap_code(KC_BSPC);
-          SEND_STRING("make keebio/iris/rev3:kylex:dfu");
-          tap_code(KC_ENTER);
-          #ifdef AUDIO_ENABLE
-            PLAY_SONG(pt_disco);
-          #endif
-          reset_keyboard();
-        }
-      }
-      return true;
       break;
   }
   return true;
