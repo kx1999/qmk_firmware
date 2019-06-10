@@ -17,5 +17,6 @@ TAP_DANCE_ENABLE = yes					# Enables Tap-Dance functionality
 BACKLIGHT_ENABLE = no 	     			# Enable keyboard backlight functionality
 LINK_TIME_OPTIMIZATION_ENABLE = yes		# Enables Link Time Optimization (LTO) when compiling the keyboard
 API_SYSEX_ENABLE = no					# Future API functionality (leave disabled)
+AUTO_SHIFT_ENABLE = yes					# Enables Auto Shift
 
 BOOTLOADER = qmk-dfu					# Defines bootloader
