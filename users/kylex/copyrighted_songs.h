@@ -1,18 +1,46 @@
-/* Copyright 2016 Jack Humbert
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+#ifdef CLOSE_ENCOUNTERS_5_NOTE
+    #undef CLOSE_ENCOUNTERS_5_NOTE
+    #undef DOE_A_DEER
+    #undef IN_LIKE_FLINT
+    #undef IMPERIAL_MARCH
+    #undef BASKET_CASE
+    #undef COIN_SOUND
+    #undef ONE_UP_SOUND
+    #undef SONIC_RING
+    #undef ZELDA_PUZZLE
+    #undef ZELDA_TREASURE
+    #undef OVERWATCH_THEME
+    #undef MARIO_THEME
+    #undef MARIO_GAMEOVER
+    #undef MARIO_MUSHROOM
+    #undef E1M1_DOOM
+    #undef DISNEY_SONG
+    #undef NUMBER_ONE
+    #undef CABBAGE_SONG
+    #undef OLD_SPICE
+    #undef VICTORY_FANFARE_SHORT
+    #undef ALL_STAR
+    #undef RICK_ROLL
+    #undef FF_PRELUDE
+    #undef TO_BOLDLY_GO
+    #undef KATAWARE_DOKI
+    #undef MEGALOVANIA
+    #undef MICHISHIRUBE
+    #undef LIEBESLEID
+    #undef MELODIES_OF_LIFE
+    #undef EYES_ON_ME
+    #undef SONG_OF_THE_ANCIENTS
+    #undef NIER_AMUSEMENT_PARK
+    #undef COPIED_CITY
+    #undef VAGUE_HOPE_COLD_RAIN
+    #undef KAINE_SALVATION
+    #undef WEIGHT_OF_THE_WORLD
+    #undef ISABELLAS_LULLABY
+    #undef TERRAS_THEME
+    #undef RENAI_CIRCULATION
+    #undef PLATINUM_DISCO
+#endif
+
 #include "musical_notes.h"
 
 #ifndef SONG_LIST_H
