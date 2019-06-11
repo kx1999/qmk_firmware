@@ -1,137 +1,43 @@
-/* Copyright 2016 Jack Humbert
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #ifdef CLOSE_ENCOUNTERS_5_NOTE
     #undef CLOSE_ENCOUNTERS_5_NOTE
-#endif
-#ifdef DOE_A_DEER
     #undef DOE_A_DEER
-#endif
-#ifdef IN_LIKE_FLINT
     #undef IN_LIKE_FLINT
-#endif
-#ifdef IMPERIAL_MARCH
     #undef IMPERIAL_MARCH
-#endif
-#ifdef BASKET_CASE
     #undef BASKET_CASE
-#endif
-#ifdef COIN_SOUND
     #undef COIN_SOUND
-#endif
-#ifdef ONE_UP_SOUND
     #undef ONE_UP_SOUND
-#endif
-#ifdef SONIC_RING
     #undef SONIC_RING
-#endif
-#ifdef ZELDA_PUZZLE
     #undef ZELDA_PUZZLE
-#endif
-#ifdef ZELDA_TREASURE
     #undef ZELDA_TREASURE
-#endif
-#ifdef OVERWATCH_THEME
     #undef OVERWATCH_THEME
-#endif
-#ifdef MARIO_THEME
     #undef MARIO_THEME
-#endif
-#ifdef MARIO_GAMEOVER
     #undef MARIO_GAMEOVER
-#endif
-#ifdef MARIO_MUSHROOM
     #undef MARIO_MUSHROOM
-#endif
-#ifdef E1M1_DOOM
     #undef E1M1_DOOM
-#endif
-#ifdef DISNEY_SONG
     #undef DISNEY_SONG
-#endif
-#ifdef NUMBER_ONE
     #undef NUMBER_ONE
-#endif
-#ifdef CABBAGE_SONG
     #undef CABBAGE_SONG
-#endif
-#ifdef OLD_SPICE
     #undef OLD_SPICE
-#endif
-#ifdef VICTORY_FANFARE_SHORT
     #undef VICTORY_FANFARE_SHORT
-#endif
-#ifdef ALL_STAR
     #undef ALL_STAR
-#endif
-#ifdef RICK_ROLL
     #undef RICK_ROLL
-#endif
-#ifdef FF_PRELUDE
     #undef FF_PRELUDE
-#endif
-#ifdef TO_BOLDLY_GO
     #undef TO_BOLDLY_GO
-#endif
-#ifdef KATAWARE_DOKI
     #undef KATAWARE_DOKI
-#endif
-#ifdef MEGALOVANIA
     #undef MEGALOVANIA
-#endif
-#ifdef MICHISHIRUBE
     #undef MICHISHIRUBE
-#endif
-#ifdef LIEBESLEID
     #undef LIEBESLEID
-#endif
-#ifdef MELODIES_OF_LIFE
     #undef MELODIES_OF_LIFE
-#endif
-#ifdef EYES_ON_ME
     #undef EYES_ON_ME
-#endif
-#ifdef SONG_OF_THE_ANCIENTS
     #undef SONG_OF_THE_ANCIENTS
-#endif
-#ifdef NIER_AMUSEMENT_PARK
     #undef NIER_AMUSEMENT_PARK
-#endif
-#ifdef COPIED_CITY
     #undef COPIED_CITY
-#endif
-#ifdef VAGUE_HOPE_COLD_RAIN
     #undef VAGUE_HOPE_COLD_RAIN
-#endif
-#ifdef KAINE_SALVATION
     #undef KAINE_SALVATION
-#endif
-#ifdef WEIGHT_OF_THE_WORLD
     #undef WEIGHT_OF_THE_WORLD
-#endif
-#ifdef ISABELLAS_LULLABY
     #undef ISABELLAS_LULLABY
-#endif
-#ifdef TERRAS_THEME
     #undef TERRAS_THEME
-#endif
-#ifdef RENAI_CIRCULATION
     #undef RENAI_CIRCULATION
-#endif
-#ifdef PLATINUM_DISCO
     #undef PLATINUM_DISCO
 #endif
 
