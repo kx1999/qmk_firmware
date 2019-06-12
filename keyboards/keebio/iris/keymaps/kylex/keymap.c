@@ -15,7 +15,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
            CSFT, Z  , X  , C  , V  , B  ,DSCR,     MDIA, N  , M  ,COMM,DOT ,SLSH,HYP ,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
-                             LALT,LOWR,ENT ,         SPC ,RASE,LGUI
+                             RALT,LOWR,ENT ,         SPC ,RASE,LGUI
     //                      `----+----+----'        `----+----+----'
     ),
 
@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    ,----+----+----+----+----+----.              ,----+----+----+----+----+----.
                ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
-               ,NUMP,SHRG,VRSN,    ,LCBR,               RCBR,    ,    ,    ,    ,    ,
+               ,NUMP,SHRG,    ,    ,LCBR,               RCBR,    ,    ,    ,    ,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
                ,HOME, SUP,BTAB,FTAB,LPRN,               RPRN,    ,    ,    ,    ,    ,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
                ,    ,LEFT,DOWN,RGHT,UNDS,               EQL ,LEFT,DOWN,RGHT,VOLD,PGUP,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-               ,    ,    ,    ,    ,PIPE,    ,     MAKE,BSLS,CALC,MYCM,    ,INS ,PGDN,
+               ,VRSN,    ,    ,    ,PIPE,    ,     MAKE,BSLS,CALC,MYCM,    ,INS ,PGDN,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
                                  ,    ,    ,             ,    ,RSET
     //                      `----+----+----'        `----+----+----'

@@ -25,10 +25,6 @@ static int delay_runonce;
 const int INIT_DELAY = 100;
 static bool runonce = true;
 
-void eeconfig_init_user(void) {
-	set_unicode_input_mode(UC_WINC);
-}
-
 void rgblight_wait(void) {
   delay_runonce = timer_read();
 }
@@ -45,6 +41,9 @@ void rgblight_init_real(void) {
 }
 
 void matrix_init_user(void) {
+	#ifdef UNICODE_ENABLE
+	set_unicode_input_mode(UC_WINC);
+	#endif
   #ifdef RGBLIGHT_ENABLE
     rgblight_wait();
   #endif

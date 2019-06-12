@@ -22,7 +22,6 @@ enum iris_layers {
   _RAISE,
 };
 
-void eeconfig_init_user(void);
 void rgblight_wait(void);
 void rgblight_init_real(void);
 void matrix_init_user(void);
