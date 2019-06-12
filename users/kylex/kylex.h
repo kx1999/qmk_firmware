@@ -15,11 +15,11 @@ bool ttxt;
 const uint8_t repeat;
 
 enum iris_layers {
-  _QWERTY,
-  _GAME,
-  _NUMPAD,
-  _LOWER,
-  _RAISE,
+	_QWERTY,
+	_GAME,
+	_NUMPAD,
+	_LOWER,
+	_RAISE,
 };
 
 void rgblight_wait(void);
