@@ -7,6 +7,9 @@ enum custom_keycodes {
   KC_SDN,
   KC_TTXT,
   KC_WTXT,
+  KC_MAKE,
+  KC_SHRG,
+  KC_VRSN,
 };
 
 #define KC_         KC_TRNS
@@ -22,4 +25,4 @@ enum custom_keycodes {
 #define KC_MDIA     TD(MDIA)                                                                                                   // Tap 1 for Play/Pause Media, Tap 2 to Toggle RGB Underglow
 #define KC_HYP      TD(HY)                                                                                                     // HYP: Tap 1 for Printscreen, Tap 2 for Task Manager, Tap 3 to Ctrl+Alt+Del, Tap 4 to Sleep, Tap 5 to Shut Down, Tap 1 and Hold for Meh modifier, Tap 2 and Hold for Hyper modifier
 #define KC_DSCR     TD(DC)                                                                                                     // DSCR: Tap 1 for Discord mute, Tap 2 for Discord deafen, Tap 3 to Toggle _GAME layer
-#define KC_RSET		RESET
+#define KC_RSET			RESET

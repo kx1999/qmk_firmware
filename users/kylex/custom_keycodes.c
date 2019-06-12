@@ -1,5 +1,6 @@
 #include "kylex.h"
 
+int TAP_CODE_DELAY = 0;
 static int prev = 0;
 static uint16_t timer;
 //#ifdef AUDIO_ENABLE
@@ -110,6 +111,40 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code(KC_CAPS);
      	}
      	return false;
+      break;
+    #ifdef UNICODE_ENABLE
+    case KC_SHRG: // ¯\_(ツ)_/¯
+      if (record->event.pressed) {
+        send_unicode_hex_string("00AF 005C 005F 0028 30C4 0029 005F 002F 00AF");
+      }
+      return false;
+      break;
+    #endif
+    case KC_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
+      if (!record->event.pressed) {
+        clear_mods();
+        send_string_with_delay_P(PSTR("make " QMK_KEYBOARD ":" QMK_KEYMAP), TAP_CODE_DELAY);
+          {
+          #if defined(__arm__)
+          send_string_with_delay_P(PSTR(":dfu-util"), TAP_CODE_DELAY);
+          #elif defined(BOOTLOADER_DFU)
+          send_string_with_delay_P(PSTR(":dfu"), TAP_CODE_DELAY);
+          #elif defined(BOOTLOADER_HALFKAY)
+          send_string_with_delay_P(PSTR(":teensy"), TAP_CODE_DELAY);
+          #elif defined(BOOTLOADER_CATERINA)
+          send_string_with_delay_P(PSTR(":avrdude"), TAP_CODE_DELAY);
+          #endif // bootloader options
+        }
+        send_string_with_delay_P(PSTR(SS_TAP(X_ENTER)), TAP_CODE_DELAY);
+      }
+      return false;
+      break;
+
+    case KC_VRSN: // Prints firmware version
+      if (record->event.pressed) {
+        send_string_with_delay_P(PSTR(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE), TAP_CODE_DELAY);
+      }
+      return false;
       break;
   }
   return true;

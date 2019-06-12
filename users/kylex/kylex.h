@@ -22,7 +22,7 @@ enum iris_layers {
   _RAISE,
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record);
+void eeconfig_init_user(void);
 void rgblight_wait(void);
 void rgblight_init_real(void);
 void matrix_init_user(void);
