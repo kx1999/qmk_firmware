@@ -9,6 +9,7 @@ NO_USB_STARTUP_CHECK = yes				# Disables usb suspend check after keyboard startu
 TAP_DANCE_ENABLE = yes						# Enables Tap-Dance functionality
 BACKLIGHT_ENABLE = no 	     			# Enable keyboard backlight functionality
 API_SYSEX_ENABLE = no							# Future API functionality (leave disabled)
+AUTO_SHIFT_ENABLE = yes
 
 KYLEX_SONGS = no									# Includes copyrighted songs
 TAP_DANCE_MACROS = yes						# Includes custom macros

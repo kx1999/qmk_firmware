@@ -2,7 +2,6 @@ SRC += kylex.c \
 			custom_keycodes.c
 
 LINK_TIME_OPTIMIZATION = yes
-AUTO_SHIFT_ENABLE = yes
 
 ifeq ($(strip $(TAP_DANCE_ENABLE)), yes)
 	SRC += tap_dance_macros.c
