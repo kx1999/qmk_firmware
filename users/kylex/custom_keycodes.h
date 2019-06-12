@@ -5,7 +5,7 @@
 enum custom_keycodes {
 	KC_SUP = SAFE_RANGE,
 	KC_SDN,
-	KC_TTXT,
+	KC_CTXT,
 	KC_WTXT,
 	KC_MAKE,
 	KC_SHRG,
