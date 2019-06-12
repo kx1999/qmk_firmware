@@ -38,7 +38,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
     }
   }
-	if (ttxt) {
+	if (ctxt) {
     if (record->event.pressed) {
       tap_code(KC_CAPS);
     }
@@ -102,9 +102,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case KC_TTXT:
+    case KC_CTXT:
      	if (record->event.pressed) {
-     	  ttxt = !ttxt;
+     		ctxt = !ctxt;
         if (caps) {
           tap_code(KC_CAPS);
         }
@@ -122,20 +122,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     #endif
     case KC_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
       if (!record->event.pressed) {
+      	uint8_t temp_mod = get_mods();
         clear_mods();
-        send_string_with_delay_P(PSTR("make " QMK_KEYBOARD ":" QMK_KEYMAP), TAP_CODE_DELAY);
-          {
+        SEND_STRING("make " QMK_KEYBOARD ":" QMK_KEYMAP);
+        #ifndef FLASH_BOOTLOADER
+        if (temp_mod & MOD_MASK_SHIFT)
+        #endif
+        {
           #if defined(__arm__)
-          send_string_with_delay_P(PSTR(":dfu-util"), TAP_CODE_DELAY);
+          SEND_STRING(":dfu-util");
           #elif defined(BOOTLOADER_DFU)
-          send_string_with_delay_P(PSTR(":dfu"), TAP_CODE_DELAY);
+          SEND_STRING(":dfu");
           #elif defined(BOOTLOADER_HALFKAY)
-          send_string_with_delay_P(PSTR(":teensy"), TAP_CODE_DELAY);
+          SEND_STRING(":teensy");
           #elif defined(BOOTLOADER_CATERINA)
-          send_string_with_delay_P(PSTR(":avrdude"), TAP_CODE_DELAY);
+          SEND_STRING(":avrdude");
           #endif // bootloader options
         }
-        send_string_with_delay_P(PSTR(SS_TAP(X_ENTER)), TAP_CODE_DELAY);
+        if (temp_mod & MOD_MASK_CTRL) {
+        	SEND_STRING(" -j8 --output-sync");
+        }
+        SEND_STRING(SS_TAP(X_ENTER));
+        set_mods(temp_mod);
       }
       return false;
       break;

@@ -24,7 +24,6 @@
 
 #define NO_AUTO_SHIFT_ALPHA
 #define AUTO_SHIFT_TIMEOUT 120
-//#define AUTO_SHIFT_SETUP
 
 #undef QMK_ESC_OUTPUT
 #undef QMK_ESC_INPUT

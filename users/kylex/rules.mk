@@ -7,6 +7,9 @@ AUTO_SHIFT_ENABLE = yes
 ifeq ($(strip $(TAP_DANCE_ENABLE)), yes)
 	SRC += tap_dance_macros.c
 endif
+ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
+	SRC += rgb_underglow.c
+endif
 
 ifeq ($(strip $(KYLEX_SONGS)), yes)
   OPT_DEFS += -DKYLEX_SONGS
