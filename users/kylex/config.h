@@ -32,9 +32,6 @@
 #define QMK_ESC_INPUT F1
 
 #ifdef AUDIO_ENABLE
-	#undef AUDIO_CLICKY
-	#define NO_MUSIC_MODE
-	#define STARTUP_SONG SONG(RENAI_CIRCULATION)
 	#ifdef COPYRIGHTED_SONGS
 		#undef CLOSE_ENCOUNTERS_5_NOTE
 		#undef DOE_A_DEER
@@ -76,6 +73,9 @@
 		#undef TERRAS_THEME
 		#undef RENAI_CIRCULATION
 		#undef PLATINUM_DISCO
-		#include "copyrighted_songs.h"
+		#include "kylex_songs.h"
 	#endif
+	#undef AUDIO_CLICKY
+	#define NO_MUSIC_MODE
+	#define STARTUP_SONG SONG(RENAI_CIRCULATION)
 #endif
