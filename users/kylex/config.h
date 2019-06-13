@@ -31,7 +31,7 @@
 #define QMK_ESC_INPUT F1
 
 #ifdef AUDIO_ENABLE
-	#ifdef COPYRIGHTED_SONGS
+	#ifdef KYLEX_SONGS
 		#undef CLOSE_ENCOUNTERS_5_NOTE
 		#undef DOE_A_DEER
 		#undef IN_LIKE_FLINT
