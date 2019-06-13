@@ -14,12 +14,13 @@ bool caps;
 bool ctxt;
 const uint8_t repeat;
 
-enum iris_layers {
+enum layers {
 	_QWERTY,
 	_GAME,
 	_NUMPAD,
 	_LOWER,
 	_RAISE,
+	_ADJT,
 };
 
 void rgblight_wait(void);

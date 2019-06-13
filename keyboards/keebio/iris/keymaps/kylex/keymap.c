@@ -3,6 +3,14 @@
 
 extern keymap_config_t keymap_config;
 
+enum iris_layers {
+	_QWERTY,
+	_GAME,
+	_NUMPAD,
+	_LOWER,
+	_RAISE,
+};
+
 /*
 		________________________________________________________
 		|                                                      |
@@ -95,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
                ,    ,LEFT,DOWN,RGHT,UNDS,               EQL ,LEFT,DOWN,RGHT,VOLD,PGUP,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
-               ,VRSN,    ,    ,    ,PIPE,    ,     MAKE,BSLS,CALC,MYCM,    ,INS ,PGDN,
+               ,VRSN,    ,    ,    ,PIPE,    ,     MAKE,BSLS,CALC,MYCM,INS ,    ,PGDN,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
                                  ,    ,    ,             ,    ,RSET
     //                      `----+----+----'        `----+----+----'
