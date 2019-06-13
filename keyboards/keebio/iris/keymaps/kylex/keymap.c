@@ -23,7 +23,7 @@ extern keymap_config_t keymap_config;
 		|       MDIA : Tap 1x = Play/pause media               |
 		|              Tap 2x = Toggle RGB underglow           |
 		|                       and audio                      |
-		|       NUMP : Toggle _NUMPAD                          |
+		|       NUMP : Toggle _NUMPAD layer                    |
 		|       SHRG : Unicode shrug                           |
 		|       SUP  : Hold to spam Up Arrow                   |
 		|       SDN  : Hold to spam Down Arrow                 |
