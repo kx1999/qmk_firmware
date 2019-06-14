@@ -16,6 +16,9 @@ endif
 ifeq ($(strip $(TAP_DANCE_MACROS)), yes)
   OPT_DEFS += -DTAP_DANCE_MACROS
 endif
-ifeq ($(strip $(CORNE)), YES)
-	OPT_DEFS += -DCORNE
+ifeq ($(strip $(GAME_MODE)), yes)
+	OPT_DEFS += -DGAME_MODE
+endif
+ifeq ($(strip $(NUMPAD_LAYER)), yes)
+	OPT_DEFS += -DNUMPAD_LAYER
 endif

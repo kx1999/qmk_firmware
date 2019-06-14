@@ -35,15 +35,6 @@ void matrix_init_user(void) {
   #ifdef RGBLIGHT_ENABLE
     rgblight_wait();
   #endif
-  #ifdef CORNE
-    #ifdef RGBLIGHT_ENABLE
-      RGB_current_mode = rgblight_config.mode;
-    #endif
-    //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
-    #ifdef SSD1306OLED
-        iota_gfx_init(!has_usb());   // turns on the display
-    #endif
-  #endif
 };
 
 __attribute__ ((weak))
@@ -61,7 +52,4 @@ void matrix_scan_user(void) {
     unregister_code(KC_DOWN);
     _delay_ms(repeat);
   }
-  #ifdef CORNE
-    iota_gfx_task();
-  #endif
 }

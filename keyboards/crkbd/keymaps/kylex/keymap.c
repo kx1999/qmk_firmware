@@ -8,7 +8,6 @@
   #include "ssd1306.h"
 #endif
 #include "kylex.h"
-
 extern keymap_config_t keymap_config;
 
 #ifdef RGBLIGHT_ENABLE
@@ -18,7 +17,11 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
-#define KC_ADJT       MO(_ADJT)
+enum corne_layers {
+  _MISC,
+};
+
+#define KC_MISC MO(_MISC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_kc( \
@@ -27,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
       CESC ,  A   ,  S   ,  D   ,  F   ,  G   ,                    H  ,  U   ,  K   ,  L   , SCLN , QUOT ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CSFT ,  Z   ,  X   ,  C   ,  V   ,  B   ,                    N  ,  M   , COMM ,  DOT , SLSH , ADJT ,\
+      CSFT ,  Z   ,  X   ,  C   ,  V   ,  B   ,                    N  ,  M   , COMM ,  DOT , SLSH , MISC ,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                   LALT , LOWR , SPC  ,     ENT ,  RASE, LGUI  \
                               //`--------------------'  `--------------------'
@@ -57,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               //`--------------------'  `--------------------'
   ),
 
-  [_ADJT] = LAYOUT_kc( \
+  [_MISC] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
            ,      ,      ,      ,      ,      ,                   F1  ,  F2  ,  F3  ,  F4  ,  F5  ,  F6  ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
@@ -71,6 +74,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 int RGB_current_mode;
+
+void matrix_init_keymap(void) {
+    #ifdef RGBLIGHT_ENABLE
+      RGB_current_mode = rgblight_config.mode;
+    #endif
+    //SSD1306 OLED init, make sure to add #define SSD1306OLED in config.h
+    #ifdef SSD1306OLED
+        iota_gfx_init(!has_usb());   // turns on the display
+    #endif
+}
 
 //SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
 #ifdef SSD1306OLED
@@ -87,7 +100,11 @@ const char *read_keylogs(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
 
-void matrix_render_user(struct CharacterMatrix *matrix) {
+void matrix_scan_keymap(void) {
+   iota_gfx_task();
+}
+
+void matrix_render_keymap(struct CharacterMatrix *matrix) {
   if (is_master) {
     // If you want to change the display of OLED, you need to change here
     matrix_write_ln(matrix, read_layer_state());
@@ -108,10 +125,20 @@ void matrix_update(struct CharacterMatrix *dest, const struct CharacterMatrix *s
   }
 }
 
-void iota_gfx_task_user(void) {
+void iota_gfx_task_keymap(void) {
   struct CharacterMatrix matrix;
   matrix_clear(&matrix);
-  matrix_render_user(&matrix);
+  matrix_render_keymap(&matrix);
   matrix_update(&display, &matrix);
 }
 #endif//SSD1306OLED
+
+bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+  if (record->event.pressed) {
+#ifdef SSD1306OLED
+    set_keylog(keycode, record);
+#endif
+    // set_timelog();
+  }
+  return true;
+}

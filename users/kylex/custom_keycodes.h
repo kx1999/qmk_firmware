@@ -2,7 +2,7 @@
 
 #include "kylex.h"
 
-enum custom_keycodes {
+enum global_keycodes {
 	KC_SUP = SAFE_RANGE,
 	KC_SDN,
 	KC_CTXT,
@@ -19,7 +19,9 @@ enum custom_keycodes {
 #define KC_CESC     CTL_T(KC_ESC)                                                                                              // Hold for Ctrl, tap for Esc
 #define KC_LOWR     TT(_LOWER)                                                                                                 // Tap toggle _LOWER layer
 #define KC_RASE     TT(_RAISE)                                                                                                 // Tap toggle _RAISE layer
+#ifdef NUMPAD_LAYER
 #define KC_NUMP     TG(_NUMPAD)                                                                                                // Toggle _NUMPAD layer
+#endif
 #define KC_FTAB     LCTL(KC_TAB)                                                                                               // Next tab
 #define KC_BTAB     LCTL(LSFT(KC_TAB))                                                                                         // Previous tab
 #define KC_MDIA     TD(MDIA)                                                                                                   // Tap 1 for Play/Pause Media, Tap 2 to Toggle RGB Underglow

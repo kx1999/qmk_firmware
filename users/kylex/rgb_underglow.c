@@ -66,18 +66,22 @@ void led_set_user(uint8_t usb_led) {
             rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
           #endif
           break;
-        case _GAME:
-          #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-          #endif
-          break;
-        case _NUMPAD:
-          #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
-            rgblight_sethsv_noeeprom(0, 255, 255);
-          #endif
-          break;
+        #ifdef GAME_MODE
+          case _GAME:
+            #ifdef RGBLIGHT_ENABLE
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #endif
+            break;
+        #endif
+        #ifdef NUMPAD_LAYER
+          case _NUMPAD:
+            #ifdef RGBLIGHT_ENABLE
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
+              rgblight_sethsv_noeeprom(0, 255, 255);
+            #endif
+            break;
+        #endif
       }
     }
   }
@@ -125,32 +129,36 @@ uint32_t layer_state_set_user(uint32_t state) {
           #endif
         }
         break;
-      case _GAME:
-        if (caps && !ctxt) {
-          #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
-            rgblight_sethsv_noeeprom(0, 0, 255);
-          #endif
-        } else {
-          #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-          #endif
-        }
-        break;
-      case _NUMPAD:
-        if (caps && !ctxt) {
-          #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
-            rgblight_sethsv_noeeprom(0, 0, 255);
-          #endif
-        } else {
-          #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
-            rgblight_sethsv_noeeprom(0, 255, 255);
-          #endif
-        }
-        break;
+      #ifdef GAME_MODE
+        case _GAME:
+          if (caps && !ctxt) {
+            #ifdef RGBLIGHT_ENABLE
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+              rgblight_sethsv_noeeprom(0, 0, 255);
+            #endif
+          } else {
+            #ifdef RGBLIGHT_ENABLE
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #endif
+          }
+          break;
+      #endif
+      #ifdef NUMPAD_LAYER
+        case _NUMPAD:
+          if (caps && !ctxt) {
+            #ifdef RGBLIGHT_ENABLE
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
+              rgblight_sethsv_noeeprom(0, 0, 255);
+            #endif
+          } else {
+            #ifdef RGBLIGHT_ENABLE
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_CHRISTMAS);
+              rgblight_sethsv_noeeprom(0, 255, 255);
+            #endif
+          }
+          break;
+      #endif
     }
   return state;
 }

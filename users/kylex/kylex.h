@@ -14,13 +14,14 @@ bool caps;
 bool ctxt;
 const uint8_t repeat;
 
-enum layers {
+enum global_layers {
 	_QWERTY,
-	_GAME,
-	_NUMPAD,
+	#ifdef GAME_MODE
+		_GAME,
+	#endif
 	_LOWER,
 	_RAISE,
-	_ADJT,
+	_NUMPAD,
 };
 
 void rgblight_wait(void);

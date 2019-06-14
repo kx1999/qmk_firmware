@@ -2,15 +2,6 @@
 #include "kylex.h"
 
 extern keymap_config_t keymap_config;
-
-enum iris_layers {
-	_QWERTY,
-	_GAME,
-	_NUMPAD,
-	_LOWER,
-	_RAISE,
-};
-
 /*
 		________________________________________________________
 		|                                                      |
@@ -85,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    ,----+----+----+----+----+----.              ,----+----+----+----+----+----.
                ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
-               ,NUMP,SHRG,    ,    ,LCBR,               RCBR,    ,    ,    ,    ,    ,
+               ,NUMP,SHRG,    ,    ,    ,                   ,    ,    ,    ,    ,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
-               ,HOME, SUP,BTAB,FTAB,LPRN,               RPRN,    ,    ,    ,    ,    ,
+               ,HOME, SUP,BTAB,FTAB,LCBR,               RCBR,    ,    ,    ,    ,    ,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
                ,END , SDN,BACK,FRWD,LBRC,    ,         ,RBRC,    ,    ,    ,    ,    ,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'

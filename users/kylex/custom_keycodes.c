@@ -18,13 +18,6 @@ bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-	#ifdef CORNE
-		#ifdef SSD1306OLED
-  	  set_keylog(keycode, record);
-		#endif
-  	  // set_timelog();
-  	}
-  #endif
 	if (wtxt.on) {
     if (record->event.pressed) {
       switch (keycode) {

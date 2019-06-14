@@ -109,6 +109,7 @@ void dsc_f (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_LGUI);
       unregister_code(KC_D);
       break;
+    #ifdef GAME_MODE
     case TRIPLE_TAP:
       if (layer_state_is(_QWERTY)) {
         layer_on(_GAME);
@@ -118,6 +119,7 @@ void dsc_f (qk_tap_dance_state_t *state, void *user_data) {
         break;
       }
       break;
+    #endif
   }
 }
 

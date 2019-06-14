@@ -13,5 +13,7 @@ AUTO_SHIFT_ENABLE = yes           # Enables auto shift functionality
 
 KYLEX_SONGS = no                  # Includes copyrighted songs
 TAP_DANCE_MACROS = yes            # Includes custom macros
+GAME_MODE = yes										# Enables _GAME layer
+NUMPAD_LAYER = yes								# Enables _NUMP layer
 
 BOOTLOADER = qmk-dfu              # Defines bootloader
