@@ -163,7 +163,7 @@ bool process_auto_shift(uint16_t keycode, keyrecord_t *record) {
 #ifndef NO_AUTO_SHIFT_SPECIAL
       case KC_MINUS:
       case KC_EQL:
-      case KC_TAB:
+      //case KC_TAB:
       case KC_LBRC:
       case KC_RBRC:
       case KC_BSLS:
