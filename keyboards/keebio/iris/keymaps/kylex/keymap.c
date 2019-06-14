@@ -3,14 +3,6 @@
 
 extern keymap_config_t keymap_config;
 
-enum iris_layers {
-	_QWERTY,
-	_GAME,
-	_NUMPAD,
-	_LOWER,
-	_RAISE,
-};
-
 /*
 		________________________________________________________
 		|                                                      |

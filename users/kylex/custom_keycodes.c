@@ -23,7 +23,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   	  set_keylog(keycode, record);
 		#endif
   	  // set_timelog();
-  	}
+  	  
   #endif
 	if (wtxt.on) {
     if (record->event.pressed) {
