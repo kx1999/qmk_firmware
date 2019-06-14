@@ -135,9 +135,9 @@ void iota_gfx_task_keymap(void) {
 
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
-#ifdef SSD1306OLED
-    set_keylog(keycode, record);
-#endif
+    #ifdef SSD1306OLED
+      set_keylog(keycode, record);
+    #endif
     // set_timelog();
   }
   return true;
