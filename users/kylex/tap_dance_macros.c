@@ -112,8 +112,7 @@ void dsc_f (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
-void dsc_r (qk_tap_dance_state_t *state, void *user_data) {
-}
+void dsc_r (qk_tap_dance_state_t *state, void *user_data) {}
 
 void mdia_f (qk_tap_dance_state_t *state, void *user_data) {
   tap_state.state = cur_dance(state);
@@ -124,14 +123,14 @@ void mdia_f (qk_tap_dance_state_t *state, void *user_data) {
       break;
     case DOUBLE_TAP:
     	#ifdef GAME_MODE
-      if (layer_state_is(_QWERTY)) {
-        layer_on(_GAME);
-        break;
-      } else if (layer_state_is(_GAME)) {
-        layer_off(_GAME);
-        break;
-      }
-    	#endif
+      	if (layer_state_is(_QWERTY)) {
+      	  layer_on(_GAME);
+      	  break;
+      	} else if (layer_state_is(_GAME)) {
+      	  layer_off(_GAME);
+      	  break;
+      	}
+    		#endif
       break;
     case TRIPLE_TAP:
       #ifdef RGBLIGHT_ENABLE

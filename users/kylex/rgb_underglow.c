@@ -10,10 +10,18 @@
 // 24 = Christmas
 // 25-34 = Static Gradient
 
-const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {30, 15, 8};
+const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {60, 30, 15};
 const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {60, 50, 40};
 const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {0, 0, 0, 0, 0};
 static uint8_t layer = _QWERTY;
+
+void suspend_power_down_user(void) {
+  rgblight_toggle_noeeprom();
+}
+
+void suspend_wakeup_init_user(void) {
+  rgblight_toggle_noeeprom();
+}
 
 void led_set_user(uint8_t usb_led) {
   static uint8_t old_usb_led = 0;
