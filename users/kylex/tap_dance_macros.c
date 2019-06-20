@@ -109,17 +109,6 @@ void dsc_f (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_LGUI);
       unregister_code(KC_D);
       break;
-    #ifdef GAME_MODE
-    case TRIPLE_TAP:
-      if (layer_state_is(_QWERTY)) {
-        layer_on(_GAME);
-        break;
-      } else if (layer_state_is(_GAME)) {
-        layer_off(_GAME);
-        break;
-      }
-      break;
-    #endif
   }
 }
 
@@ -134,6 +123,17 @@ void mdia_f (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_MPLY);
       break;
     case DOUBLE_TAP:
+    	#ifdef GAME_MODE
+      if (layer_state_is(_QWERTY)) {
+        layer_on(_GAME);
+        break;
+      } else if (layer_state_is(_GAME)) {
+        layer_off(_GAME);
+        break;
+      }
+    	#endif
+      break;
+    case TRIPLE_TAP:
       #ifdef RGBLIGHT_ENABLE
         rgblight_toggle_noeeprom();
       #endif
