@@ -16,11 +16,11 @@ const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {0, 0, 0, 0, 0};
 static uint8_t layer = _QWERTY;
 
 void suspend_power_down_user(void) {
-  rgblight_toggle_noeeprom();
+  rgblight_disable();
 }
 
 void suspend_wakeup_init_user(void) {
-  rgblight_toggle_noeeprom();
+  rgblight_enable();
 }
 
 void led_set_user(uint8_t usb_led) {
