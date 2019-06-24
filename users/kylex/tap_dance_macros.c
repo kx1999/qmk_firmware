@@ -135,6 +135,8 @@ void mdia_f (qk_tap_dance_state_t *state, void *user_data) {
     case TRIPLE_TAP:
       #ifdef RGBLIGHT_ENABLE
         rgblight_toggle_noeeprom();
+        layer_state_set_user(layer_state);
+        //led_set_user(usb_led);
       #endif
       #ifdef AUDIO_ENABLE
         register_code(AU_TOG);
