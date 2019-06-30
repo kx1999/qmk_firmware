@@ -21,6 +21,8 @@ SLEEP_LED_ENABLE = no             # Breathing sleep LED during USB suspend
 KYLEX_SONGS = no                  # Includes copyrighted songs
 TAP_DANCE_MACROS = yes            # Includes custom macros
 
+BOOTLOADER = qmk-dfu
+
 # If you want to change the display of OLED, you need to change here
 SRC +=  ./lib/glcdfont.c \
         ./lib/rgb_state_reader.c \
