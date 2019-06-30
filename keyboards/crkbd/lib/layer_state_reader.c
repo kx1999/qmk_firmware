@@ -9,7 +9,6 @@
 #define L_RAISE 4
 #define L_ADJUST 8
 #define L_ADJUST_TRI 14
-#define L_MISC 16
 
 char layer_state_str[24];
 
@@ -17,7 +16,7 @@ const char *read_layer_state(void) {
   switch (layer_state)
   {
   case L_BASE:
-    snprintf(layer_state_str, sizeof(layer_state_str), "Layer: QWERTY");
+    snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Default");
     break;
   case L_RAISE:
     snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Raise");
@@ -28,9 +27,6 @@ const char *read_layer_state(void) {
   case L_ADJUST:
   case L_ADJUST_TRI:
     snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Adjust");
-    break;
-  case L_MISC:
-    snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Misc");
     break;
   default:
     snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state);
