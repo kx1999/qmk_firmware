@@ -22,6 +22,7 @@ enum global_layers {
 	_LOWER,
 	_RAISE,
 	_NUMPAD,
+	_MISC,
 };
 
 void rgblight_wait(void);
