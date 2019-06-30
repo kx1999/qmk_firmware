@@ -24,7 +24,7 @@ void rgblight_init_real(void) {
         rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
       #endif
       #ifndef KYLEX_RGB
-        rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+        rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
         rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
       #endif
     #endif

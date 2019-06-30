@@ -12,6 +12,7 @@ API_SYSEX_ENABLE = no             # Future API functionality (leave disabled)
 AUTO_SHIFT_ENABLE = yes           # Enables auto shift functionality
 
 KYLEX_SONGS = no                  # Includes copyrighted songs
+KYLEX_RGB = yes										# Includes custom RGB settings
 TAP_DANCE_MACROS = yes            # Includes custom macros
 GAME_MODE = yes										# Enables _GAME layer
 NUMPAD_LAYER = yes								# Enables _NUMP layer

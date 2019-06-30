@@ -51,11 +51,10 @@ void led_set_user(uint8_t usb_led) {
           #ifdef RGBLIGHT_ENABLE
             #ifdef KYLEX_RGB
               rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-            #endif
-            #ifndef KYLEX_RGB
-              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
-              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+              rgblight_sethsv_noeeprom(245/*350*/, 0, 255);
+            #else
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
+              rgblight_sethsv_noeeprom(245/*350*/, 127, 255);
             #endif
           #endif
           break;
@@ -79,9 +78,8 @@ void led_set_user(uint8_t usb_led) {
             #ifdef KYLEX_RGB
               rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
               rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-            #endif
-            #ifndef KYLEX_RGB
-              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+            #else
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
               rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
             #endif
           #endif
@@ -139,17 +137,21 @@ uint32_t layer_state_set_user(uint32_t state) {
       case _QWERTY:
         if (caps && !ctxt) {
           #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-            rgblight_sethsv_noeeprom(0, 0, 255);
+            #ifdef KYLEX_RGB
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+              rgblight_sethsv_noeeprom(0, 0, 255);
+            #else
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
+              rgblight_sethsv_noeeprom(245/*350*/, 127, 255);
+            #endif
           #endif
         } else {
           #ifdef RGBLIGHT_ENABLE
             #ifdef KYLEX_RGB
               rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
               rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-            #endif
-            #ifndef KYLEX_RGB
-              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+            #else
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
               rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
             #endif
           #endif
