@@ -41,8 +41,14 @@ void led_set_user(uint8_t usb_led) {
           break;
         default:
           #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-            rgblight_sethsv_noeeprom(0, 0, 255);
+            #ifdef KYLEX_RGB
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #endif
+            #ifndef KYLEX_RGB
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #endif
           #endif
           break;
         }
@@ -62,8 +68,14 @@ void led_set_user(uint8_t usb_led) {
           break;
         case _QWERTY:
           #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #ifdef KYLEX_RGB
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #endif
+            #ifndef KYLEX_RGB
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #endif
           #endif
           break;
         #ifdef GAME_MODE
@@ -124,9 +136,16 @@ uint32_t layer_state_set_user(uint32_t state) {
           #endif
         } else {
           #ifdef RGBLIGHT_ENABLE
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #ifdef KYLEX_RGB
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #endif
+            #ifndef KYLEX_RGB
+              rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+              rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            #endif
           #endif
+          break;
         }
         break;
       #ifdef GAME_MODE

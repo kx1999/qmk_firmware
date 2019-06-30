@@ -17,10 +17,16 @@ void rgblight_wait(void) {
 void rgblight_init_real(void) {
   if (runonce && timer_elapsed(delay_runonce) > INIT_DELAY) {
     runonce = false;
+    rgblight_enable_noeeprom();
     #ifdef RGBLIGHT_ENABLE
-      rgblight_enable_noeeprom();
-      rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-      rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+      #ifdef KYLEX_RGB
+        rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+        rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+      #endif
+      #ifndef KYLEX_RGB
+        rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
+        rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+      #endif
     #endif
   }
 }
