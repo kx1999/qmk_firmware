@@ -35,6 +35,7 @@ void matrix_init_user(void) {
   #ifdef RGBLIGHT_ENABLE
     rgblight_wait();
   #endif
+  matrix_init_keymap();
 };
 
 __attribute__ ((weak))
@@ -52,4 +53,5 @@ void matrix_scan_user(void) {
     unregister_code(KC_DOWN);
     _delay_ms(repeat);
   }
+  matrix_scan_keymap();
 }
