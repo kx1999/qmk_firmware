@@ -24,11 +24,11 @@ TAP_DANCE_MACROS = yes            # Includes custom macros
 BOOTLOADER = qmk-dfu
 
 # If you want to change the display of OLED, you need to change here
-SRC +=  ./kylex/lib/layer_state_reader.c \
-        ./kylex/lib/logo_reader.c \
-        ./kylex/lib/host_led_state_reader.c \
-        ./kylex/lib/glcdfont.c \
-        # ./kylex/lib/rgb_state_reader.c \
-        # ./kylex/lib/keylogger.c \
-        # ./kylex/lib/mode_icon_reader.c \
-        # ./kylex/lib/timelogger.c \
+SRC +=  users/kylex/lib/layer_state_reader.c \
+        users/kylex/lib/logo_reader.c \
+        users/kylex/lib/host_led_state_reader.c \
+        users/kylex/lib/glcdfont.c \
+        # users/kylex/lib/rgb_state_reader.c \
+        # users/kylex/lib/keylogger.c \
+        # users/kylex/lib/mode_icon_reader.c \
+        # users/kylex/lib/timelogger.c \
