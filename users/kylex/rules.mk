@@ -13,6 +13,9 @@ endif
 ifeq ($(strip $(KYLEX_SONGS)), yes)
   OPT_DEFS += -DKYLEX_SONGS
 endif
+ifeq ($(strip $(KYLEX_RGB)), yes)
+  OPT_DEFS += -DKYLEX_RGB
+endif
 ifeq ($(strip $(TAP_DANCE_MACROS)), yes)
   OPT_DEFS += -DTAP_DANCE_MACROS
 endif

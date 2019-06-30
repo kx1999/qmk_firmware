@@ -130,7 +130,7 @@ void mdia_f (qk_tap_dance_state_t *state, void *user_data) {
       	  layer_off(_GAME);
       	  break;
       	}
-    		#endif
+    	#endif
       break;
     case TRIPLE_TAP:
       #ifdef RGBLIGHT_ENABLE

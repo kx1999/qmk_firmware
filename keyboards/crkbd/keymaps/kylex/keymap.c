@@ -17,22 +17,16 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
-enum corne_layers {
-  _MISC,
-};
-
-#define KC_MISC MO(_MISC)
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
       TAB  ,  Q   ,  W   ,  E   ,  R   ,  T   ,                    Y  ,  U   ,  I   ,  O   ,  P   , BSPC ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CESC ,  A   ,  S   ,  D   ,  F   ,  G   ,                    H  ,  U   ,  K   ,  L   , SCLN , QUOT ,\
+      CESC ,  A   ,  S   ,  D   ,  F   ,  G   ,                    H  ,  J   ,  K   ,  L   , SCLN , QUOT ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CSFT ,  Z   ,  X   ,  C   ,  V   ,  B   ,                    N  ,  M   , COMM ,  DOT , SLSH , MISC ,\
+      CSFT ,  Z   ,  X   ,  C   ,  V   ,  B   ,                    N  ,  M   , COMM ,  DOT , SLSH , HYP  ,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                  LALT , LOWR , SPC  ,     ENT ,  RASE, LGUI  \
+                                  LALT , LOWR , ENT  ,     SPC ,  RASE, LGUI  \
                               //`--------------------'  `--------------------'
   ),
 
@@ -40,37 +34,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------.                ,-----------------------------------------.
       TAB  ,  1   ,  2   ,  3   ,  4   ,  5   ,                   6   ,  7   ,  8   ,  9   ,  0   , BSPC ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CESC , HOME , SUP  , BTAB , FTAB , LCBR ,                  RCBR ,      ,      ,      ,      ,      ,\
+      CESC , HOME , SUP  , BTAB , FTAB , LCBR ,                  RCBR ,  F1  ,  F2  ,  F3  ,  F4  ,  F5  ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CSFT , END  , SDN  , BACK , FRWD , LBRC ,                  RBRC ,      ,      ,      ,      ,      ,\
+      CSFT , END  , SDN  , BACK , FRWD , LBRC ,                  RBRC ,  F6  ,  F7  ,  F8  ,  F9  ,  F10 ,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                       ,      ,      ,         ,      ,       \
+                                   F11 ,      ,      ,         ,      ,  F12  \
                               //`--------------------'  `--------------------'
   ),
 
   [_RAISE] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-      TAB  , WTXT , CTXT ,  UP  ,      , MINS ,                  PLUS , MPRV ,  UP  , MNXT , VOLU ,      ,\
+      TAB  , WTXT , CTXT ,  UP  ,      , MINS ,                  PLUS , MPRV ,  UP  , MNXT , VOLU , DEL  ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
       CESC ,      , LEFT , DOWN , RGHT , UNDS ,                  EQL  , LEFT , DOWN , RGHT , VOLD ,      ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-      CSFT , MDIA , DSCR ,      ,      , PIPE ,                  BSLS , CALC , MYCM , INS  ,      , HYP  ,\
+      CSFT , MDIA , DSCR ,      ,      , PIPE ,                  BSLS , CALC , MYCM , INS  ,      ,      ,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                       ,      ,      ,         ,      , RSET  \
-                              //`--------------------'  `--------------------'
-  ),
-
-  [_MISC] = LAYOUT_kc( \
-  //,-----------------------------------------.                ,-----------------------------------------.
-           ,      ,      ,      ,      ,      ,                   F1  ,  F2  ,  F3  ,  F4  ,  F5  ,  F6  ,\
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-           ,      ,      ,      ,      ,      ,                   F7  ,  F8  ,  F9  ,  F10 ,  F11 ,  F12 ,\
-  //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-           ,      ,      ,      ,      ,      ,                       ,      ,      ,      ,      ,      ,\
-  //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
-                                       ,      ,      ,         ,      ,       \
+                                  MAKE ,      ,      ,         ,      , RSET  \
                               //`--------------------'  `--------------------'
   )
+  
 };
 
 int RGB_current_mode;
@@ -95,23 +78,23 @@ void set_keylog(uint16_t keycode, keyrecord_t *record);
 const char *read_keylog(void);
 const char *read_keylogs(void);
 
-// const char *read_mode_icon(bool swap);
-// const char *read_host_led_state(void);
-// void set_timelog(void);
-// const char *read_timelog(void);
+const char *read_mode_icon(bool swap);
+const char *read_host_led_state(void);
+void set_timelog(void);
+const char *read_timelog(void);
 
 void matrix_scan_keymap(void) {
    iota_gfx_task();
 }
 
-void matrix_render_keymap(struct CharacterMatrix *matrix) {
+void matrix_render_user(struct CharacterMatrix *matrix) {
   if (is_master) {
     // If you want to change the display of OLED, you need to change here
     matrix_write_ln(matrix, read_layer_state());
-    matrix_write_ln(matrix, read_keylog());
-    matrix_write_ln(matrix, read_keylogs());
+    //matrix_write_ln(matrix, read_keylog());
+    //matrix_write_ln(matrix, read_keylogs());
     //matrix_write_ln(matrix, read_mode_icon(keymap_config.swap_lalt_lgui));
-    //matrix_write_ln(matrix, read_host_led_state());
+    matrix_write_ln(matrix, read_host_led_state());
     //matrix_write_ln(matrix, read_timelog());
   } else {
     matrix_write(matrix, read_logo());
@@ -125,10 +108,10 @@ void matrix_update(struct CharacterMatrix *dest, const struct CharacterMatrix *s
   }
 }
 
-void iota_gfx_task_keymap(void) {
+void iota_gfx_task_user(void) {
   struct CharacterMatrix matrix;
   matrix_clear(&matrix);
-  matrix_render_keymap(&matrix);
+  matrix_render_user(&matrix);
   matrix_update(&display, &matrix);
 }
 #endif//SSD1306OLED
@@ -136,9 +119,9 @@ void iota_gfx_task_keymap(void) {
 bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
     #ifdef SSD1306OLED
-      set_keylog(keycode, record);
+      //set_keylog(keycode, record);
     #endif
-    // set_timelog();
+    //set_timelog();
   }
   return true;
 }
