@@ -19,7 +19,7 @@ enum global_keycodes {
 #define KC_CESC     CTL_T(KC_ESC)                                                                                              // Hold for Ctrl, tap for Esc
 #define KC_LOWR     TT(_LOWER)                                                                                                 // Tap toggle _LOWER layer
 #define KC_RASE     TT(_RAISE)                                                                                                 // Tap toggle _RAISE layer
-#define KC_MISC			TG(_MISC)
+#define KC_MISC			TT(_MISC)
 #ifdef NUMPAD_LAYER
 #define KC_NUMP     TG(_NUMPAD)                                                                                                // Toggle _NUMPAD layer
 #endif
