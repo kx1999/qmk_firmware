@@ -24,7 +24,7 @@ void suspend_wakeup_init_user(void) {
 }
 
 void led_set_user(uint8_t usb_led) {
-  if ((usb_led & (1 << USB_LED_CAPS_LOCK))) {
+  if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
     caps = true;
   } else {
     caps = false;
