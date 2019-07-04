@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT_kc( \
   //,-----------------------------------------.                ,-----------------------------------------.
-      TAB  , WTXT , CTXT ,  UP  ,      , MINS ,                  PLUS , MPRV ,  UP  , MNXT , VOLU , DEL  ,\
+      GRV  , WTXT , CTXT ,  UP  ,      , MINS ,                  PLUS , MPRV ,  UP  , MNXT , VOLU , DEL  ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
       CESC ,      , LEFT , DOWN , RGHT , UNDS ,                  EQL  , LEFT , DOWN , RGHT , VOLD ,      ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
