@@ -25,3 +25,6 @@ endif
 ifeq ($(strip $(NUMPAD_LAYER)), yes)
 	OPT_DEFS += -DNUMPAD_LAYER
 endif
+ifeq ($(strip $(RGB_MATRIX_ENABLE)), WS2812)
+	OPT_DEFS += -DRGB_MATRIX_ENABLE
+endif

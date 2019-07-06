@@ -138,6 +138,10 @@ void mdia_f (qk_tap_dance_state_t *state, void *user_data) {
         layer_state_set_user(layer_state);
         //led_set_user(usb_led);
       #endif
+      #ifdef RGB_MATRIX_ENABLE
+        rgb_matrix_toggle();
+        layer_state_set_user(layer_state);
+      #endif
       #ifdef AUDIO_ENABLE
         register_code(AU_TOG);
       #endif
