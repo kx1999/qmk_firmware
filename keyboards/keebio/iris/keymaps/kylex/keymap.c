@@ -12,15 +12,15 @@ extern keymap_config_t keymap_config;
 		|       CSFT : Tap = Caps Lock, Hold = LShift          |
 		|       DSCR : Tap x1 = Hyper(m)                       |
 		|              Tap x2 = Hyper(d)                       |
-		|              Tap x3 = Toggle _GAME layer             |
 		|       HYP  : Tap x1 = Print screen                   |
 		|              Tap x2 = Open Task Manager              |
 		|              Tap x3 = Sleep button                   |
 		|              Tap x4 = Power button                   |
 		|              Hold 1x = Meh Modifier                  |
-		|              Hold 1x = Hyper Modifier                |
+		|              Hold 2x = Hyper Modifier                |
 		|       MDIA : Tap 1x = Play/pause media               |
-		|              Tap 2x = Toggle RGB underglow           |
+		|              Tap 2x = Toggle _GAME layer	           |
+		|              Tap 3x = Toggle RGB underglow           |
 		|                       and audio                      |
 		|       NUMP : Toggle _NUMPAD layer                    |
 		|       SHRG : Unicode shrug                           |
