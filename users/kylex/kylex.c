@@ -19,11 +19,13 @@ void rgblight_init_real(void) {
     runonce = false;
     rgblight_enable_noeeprom();
     #ifdef RGBLIGHT_ENABLE
-      #ifdef KYLEX_RGB
+      rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
+      rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+      #ifdef HLD_RGB
         rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
         rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
       #endif
-      #ifndef KYLEX_RGB
+      #ifdef PORTAL_RGB
         rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
         rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
       #endif
