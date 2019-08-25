@@ -36,18 +36,29 @@ void led_set_user(uint8_t usb_led) {
         case _RAISE:
           rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
           rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(0, 255, 255);
+          #endif
           break;
         case _LOWER:
           rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
           rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(0, 255, 255);
+          #endif
           break;
         default:
-          #ifdef KYLEX_RGB
+          rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef HLD_RGB
             rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-            rgblight_sethsv_noeeprom(245/*350*/, 0, 255);
-          #else
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
-            rgblight_sethsv_noeeprom(245/*350*/, 127, 255);
+            rgblight_sethsv_noeeprom(245, 0, 255);
+          #endif
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+            rgblight_sethsv_noeeprom(0, 255, 255);
           #endif
           break;
         }
@@ -55,25 +66,44 @@ void led_set_user(uint8_t usb_led) {
       switch (layer) {
         case _RAISE:
           rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
-          rgblight_sethsv_noeeprom(100/*140*/, 255, 255);
+          rgblight_sethsv_noeeprom(85, 255, 255);
+          #ifdef HLD_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(100, 255, 255);
+          #endif
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(25, 225, 255);
+          #endif
           break;
         case _LOWER:
           rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
-          rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
+          rgblight_sethsv_noeeprom(170, 255, 255);
+          #ifdef HLD_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(121, 255, 255);
+          #endif
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(152, 100, 255);
+          #endif
           break;
         case _QWERTY:
-          #ifdef KYLEX_RGB
+          rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
+          rgblight_sethsv_noeeprom(0, 255, 255);
+          #ifdef HLD_RGB
             rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-          #else
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            rgblight_sethsv_noeeprom(245, 255, 255);
+          #endif
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+            rgblight_sethsv_noeeprom(0, 0, 255);
           #endif
           break;
         #ifdef GAME_MODE
           case _GAME:
             rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            rgblight_sethsv_noeeprom(245, 255, 255);
             break;
         #endif
         #ifdef NUMPAD_LAYER
@@ -94,36 +124,66 @@ uint32_t layer_state_set_user(uint32_t state) {
         if (caps && !ctxt) {
           rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
           rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(0, 255, 255);
+          #endif
         } else {
           rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
-          rgblight_sethsv_noeeprom(100/*140*/, 255, 255);
+          rgblight_sethsv_noeeprom(85, 255, 255);
+          #ifdef HLD_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(100, 255, 255);
+          #endif
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 5);
+            rgblight_sethsv_noeeprom(25, 225, 255);
+          #endif
         }
         break;
       case _LOWER:
         if (caps && !ctxt) {
           rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
           rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(0, 255, 255);
+          #endif
         } else {
           rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
-          rgblight_sethsv_noeeprom(121/*170*/, 255, 255);
+          rgblight_sethsv_noeeprom(170, 255, 255);
+          #ifdef HLD_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(121, 255, 255);
+          #endif
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_SNAKE + 4);
+            rgblight_sethsv_noeeprom(152, 100, 255);
+          #endif
         }
         break;
       case _QWERTY:
         if (caps && !ctxt) {
-          #ifdef KYLEX_RGB
+          rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+          rgblight_sethsv_noeeprom(0, 0, 255);
+          #ifdef HLD_RGB
             rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-            rgblight_sethsv_noeeprom(0, 0, 255);
-          #else
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
-            rgblight_sethsv_noeeprom(245/*350*/, 127, 255);
+            rgblight_sethsv_noeeprom(245, 0, 255);
+          #endif
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+            rgblight_sethsv_noeeprom(0, 255, 255);
           #endif
         } else {
-          #ifdef KYLEX_RGB
+          rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
+          rgblight_sethsv_noeeprom(0, 255, 255);
+          #ifdef HLD_RGB
             rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-          #else
-            rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            rgblight_sethsv_noeeprom(245, 255, 255);
+          #endif
+          #ifdef PORTAL_RGB
+            rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+            rgblight_sethsv_noeeprom(0, 0, 255);
           #endif
           break;
         }
@@ -135,7 +195,7 @@ uint32_t layer_state_set_user(uint32_t state) {
             rgblight_sethsv_noeeprom(0, 0, 255);
           } else {
             rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL);
-            rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+            rgblight_sethsv_noeeprom(0, 255, 255);
           }
           break;
       #endif
