@@ -33,12 +33,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGBLIGHT_ENABLE
   #undef RGBLED_NUM
   #define RGBLED_NUM 27
-  #define RGBLIGHT_LIMIT_VAL 150
+  #define RGBLIGHT_LIMIT_VAL 120
 #endif
 
 #ifdef RGB_MATRIX_ENABLE
-//#define RGB_MATRIX_KEYPRESSES // reacts to keypresses
-#define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (instead of keypresses)
+#define RGB_MATRIX_KEYPRESSES // reacts to keypresses
+//#define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (instead of keypresses)
 //#define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
 #define RGB_DISABLE_WHEN_USB_SUSPENDED true // turn off effects when suspended
 #define RGB_MATRIX_FRAMEBUFFER_EFFECTS
@@ -48,13 +48,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_MATRIX_HUE_STEP 8
 #define RGB_MATRIX_SAT_STEP 8
 #define RGB_MATRIX_VAL_STEP 8
-#define RGB_MATRIX_SPD_STEP 10
+#define RGB_MATRIX_SPD_STEP 8
 
 /* Disable the animations you don't want/need.  You will need to disable a good number of these    *
  * because they take up a lot of space.  Disable until you can successfully compile your firmware. */
 #define DISABLE_RGB_MATRIX_NONE
 #define DISABLE_RGB_MATRIX_SOLID_COLOR
-//#define DISABLE_RGB_MATRIX_ALPHAS_MODS
+#define DISABLE_RGB_MATRIX_ALPHAS_MODS
 #define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN
 #define DISABLE_RGB_MATRIX_BREATHING
 #define DISABLE_RGB_MATRIX_BAND_SAT
@@ -72,11 +72,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DISABLE_RGB_MATRIX_DUAL_BEACON
 #define DISABLE_RGB_MATRIX_CYCLE_PINWHEEL
 #define DISABLE_RGB_MATRIX_CYCLE_SPIRAL
-#define DISABLE_RGB_MATRIX_RAINBOW_BEACON
+//#define DISABLE_RGB_MATRIX_RAINBOW_BEACON
 #define DISABLE_RGB_MATRIX_RAINBOW_PINWHEELS
 #define DISABLE_RGB_MATRIX_RAINDROPS
 #define DISABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
-//#define DISABLE_RGB_MATRIX_TYPING_HEATMAP
+#define DISABLE_RGB_MATRIX_TYPING_HEATMAP
 #define DISABLE_RGB_MATRIX_DIGITAL_RAIN
 #define DISABLE_RGB_MATRIX_SOLID_REACTIVE
 #define DISABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE

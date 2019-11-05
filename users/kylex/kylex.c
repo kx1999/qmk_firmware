@@ -6,6 +6,8 @@ bool caps = false;
 bool ctxt = false;
 const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
 
+#ifdef RGBLIGHT_ENABLE
+
 static int delay_runonce;
 const int INIT_DELAY = 100;
 static bool runonce = true;
@@ -18,20 +20,19 @@ void rgblight_init_real(void) {
   if (runonce && timer_elapsed(delay_runonce) > INIT_DELAY) {
     runonce = false;
     rgblight_enable_noeeprom();
-    #ifdef RGBLIGHT_ENABLE
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
+    rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+    #ifdef HLD_RGB
+      rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
+      rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
+    #endif
+    #ifdef PORTAL_RGB
       rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
       rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-      #ifdef HLD_RGB
-        rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_GRADIENT + 9);
-        rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-      #endif
-      #ifdef PORTAL_RGB
-        rgblight_mode_noeeprom(RGBLIGHT_MODE_RAINBOW_SWIRL + 2);
-        rgblight_sethsv_noeeprom(245/*350*/, 255, 255);
-      #endif
     #endif
   }
 }
+#endif
 
 __attribute__ ((weak))
 void matrix_init_keymap(void) {}
@@ -50,7 +51,9 @@ __attribute__ ((weak))
 void matrix_scan_keymap(void) {}
 
 void matrix_scan_user(void) {
-  rgblight_init_real();
+  #ifdef RGBLIGHT_ENABLE
+    rgblight_init_real();
+  #endif
   if (up) {
     register_code(KC_UP);
     unregister_code(KC_UP);

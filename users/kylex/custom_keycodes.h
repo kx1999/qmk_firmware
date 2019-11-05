@@ -30,15 +30,13 @@ enum global_keycodes {
 #define KC_DSCR     TD(DC)                                                                                                     // DSCR: Tap 1 for Discord mute, Tap 2 for Discord deafen, Tap 3 to Toggle _GAME layer
 #define KC_RSET			RESET
 
-#ifdef RGB_MATRIX_ENABLE
-	#define KC_RTOG		RGB_TOG
-	#define KC_RHUI		RGB_HUI
-	#define KC_RHUD	 	RGB_HUD
-	#define KC_RSAI		RGB_SAI
-	#define KC_RSAD		RGB_SAD
-	#define KC_RVAI		RGB_VAI
-	#define KC_RVAD		RGB_VAD
-	#define KC_RMOD		RGB_MOD
-	#define KC_RSPI		RGB_SPI
-	#define KC_RSPD		RGB_SPD
-#endif
+#define KC_RTOG		RGB_TOG
+#define KC_RHUI		RGB_HUI
+#define KC_RHUD	 	RGB_HUD
+#define KC_RSAI		RGB_SAI
+#define KC_RSAD		RGB_SAD
+#define KC_RVAI		RGB_VAI
+#define KC_RVAD		RGB_VAD
+#define KC_RMOD		RGB_MOD
+#define KC_RSPI		RGB_SPI
+#define KC_RSPD		RGB_SPD

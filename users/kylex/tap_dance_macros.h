@@ -8,8 +8,6 @@ enum {
   DOUBLE_TAP,
   DOUBLE_HOLD,
   TRIPLE_TAP,
-  QUAD_TAP,
-  QUIN_TAP,
 };
 enum {
   HY = 0,

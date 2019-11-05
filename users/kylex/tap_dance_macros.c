@@ -15,12 +15,8 @@ int cur_dance (qk_tap_dance_state_t *state) {
     }
   } else if (state->count == 3) {
     return TRIPLE_TAP;
-  } else if (state->count == 4) {
-    return QUAD_TAP;
-  } else if (state->count == 5) {
-    return QUIN_TAP;
   } else {
-    return 8;
+    return 4;
   }
 }
 
@@ -58,10 +54,6 @@ void hyp_f (qk_tap_dance_state_t *state, void *user_data) {
     case TRIPLE_TAP:
       register_code(KC_SLEP);
       unregister_code(KC_SLEP);
-      break;
-    case QUAD_TAP:
-      register_code(KC_PWR);
-      unregister_code(KC_PWR);
       break;
   }
 }
@@ -141,9 +133,6 @@ void mdia_f (qk_tap_dance_state_t *state, void *user_data) {
       #ifdef RGB_MATRIX_ENABLE
         rgb_matrix_toggle();
         layer_state_set_user(layer_state);
-      #endif
-      #ifdef AUDIO_ENABLE
-        register_code(AU_TOG);
       #endif
       break;
   }
