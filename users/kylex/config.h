@@ -12,6 +12,7 @@
 	#define RGBLIGHT_SLEEP
 #endif
 
+#define AUTO_SHIFT_SETUP
 #define PERMISSIVE_HOLD
 #undef TAPPING_TOGGLE
 #define TAPPING_TOGGLE 1
