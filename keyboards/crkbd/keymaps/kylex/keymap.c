@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
            ,      ,      ,      ,      ,      ,                       , RTOG , RHUD , RSAD , RVAD , RSPD ,\
   //|------+------+------+------+------+------|                |------+------+------+------+------+------|
-           ,      ,      ,      ,      ,      ,                       ,      ,      ,      , MISC ,      ,\
+           ,      ,      ,      ,      ,      ,                       ,      ,      ,      , MISC , ASTG ,\
   //|------+------+------+------+------+------+------|  |------+------+------+------+------+------+------|
                                        ,      ,      ,         ,      ,       \
                               //`--------------------'  `--------------------'
@@ -130,7 +130,7 @@ const char *read_logo(void);
 //const char *read_keylogs(void);
 //
 //const char *read_mode_icon(bool swap);
-const char *read_host_led_state(void);
+//const char *read_host_led_state(void);
 //void set_timelog(void);
 //const char *read_timelog(void);
 
@@ -145,10 +145,12 @@ void matrix_render_user(struct CharacterMatrix *matrix) {
     // matrix_write_ln(matrix, read_keylog());
     // matrix_write_ln(matrix, read_keylogs());
     // matrix_write_ln(matrix, read_mode_icon(keymap_config.swap_lalt_lgui));
-    matrix_write_ln(matrix, read_host_led_state());
+    // matrix_write_ln(matrix, read_host_led_state());
     // matrix_write_ln(matrix, read_timelog());
-    //matrix_write(matrix,read_logo());
+    // matrix_write(matrix,read_logo());
   } else {
+    // matrix_write_ln(matrix, read_layer_state());
+    //matrix_write_ln(matrix, read_host_led_state());
     matrix_write(matrix, read_logo());
   }
 }
