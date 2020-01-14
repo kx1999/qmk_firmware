@@ -66,3 +66,13 @@ void matrix_scan_user(void) {
   }
   matrix_scan_keymap();
 }
+
+void suspend_power_down_kb(void)
+{
+  rgb_matrix_set_suspend_state(true);
+}
+
+void suspend_wakeup_init_kb(void)
+{
+  rgb_matrix_set_suspend_state(false);
+}
