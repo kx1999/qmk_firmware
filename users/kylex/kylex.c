@@ -69,10 +69,20 @@ void matrix_scan_user(void) {
 
 void suspend_power_down_kb(void)
 {
-  rgb_matrix_set_suspend_state(true);
+  #ifdef RGB_MATRIX_ENABLE
+    rgb_matrix_set_suspend_state(true);
+  #endif
+  #ifdef RGBLIGHT_ENABLE
+    rgblight_disable();
+  #endif
 }
 
 void suspend_wakeup_init_kb(void)
 {
-  rgb_matrix_set_suspend_state(false);
+  #ifdef RGB_MATRIX_ENABLE
+    rgb_matrix_set_suspend_state(false);
+  #endif
+  #ifdef RGBLIGHT_ENABLE
+    rgblight_enable();
+  #endif
 }

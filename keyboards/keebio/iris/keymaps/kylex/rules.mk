@@ -23,8 +23,8 @@ API_SYSEX_ENABLE = no
 KEY_LOCK_ENABLE = no
 
 KYLEX_SONGS = no                  # Includes copyrighted songs
-HLD_RGB = no											# Hyper Light Drifter colors
-PORTAL_RGB = yes 									# Portal colors
+HLD_RGB = yes											# Hyper Light Drifter colors
+PORTAL_RGB = no 									# Portal colors
 TAP_DANCE_MACROS = yes            # Includes custom macros
 GAME_MODE = yes										# Enables _GAME layer
 NUMPAD_LAYER = yes								# Enables _NUMP layer

@@ -76,9 +76,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //    ,----+----+----+----+----+----.              ,----+----+----+----+----+----.
                ,EXLM, AT ,HASH,DLR ,PERC,               CIRC,AMPR,ASTR,LPRN,RPRN,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
-               ,NUMP,SHRG,ASTG,    ,    ,                   ,    ,    ,    ,    ,    ,
+               ,NUMP,SHRG,ASTG,    ,    ,                   ,RMOD,RHUI,RSAI,RVAI,    ,
     //    |----+----+----+----+----+----|              |----+----+----+----+----+----|
-               ,HOME, SUP,BTAB,FTAB,LCBR,               RCBR,    ,    ,    ,    ,    ,
+               ,HOME, SUP,BTAB,FTAB,LCBR,               RCBR,RTOG,RHUD,RSAD,RVAD,    ,
     //    |----+----+----+----+----+----+----.    ,----|----+----+----+----+----+----|
                ,END , SDN,BACK,FRWD,LBRC,    ,         ,RBRC,    ,    ,    ,    ,    ,
     //    `----+----+----+----+----+----+----/    \----+----+----+----+----+----+----'
