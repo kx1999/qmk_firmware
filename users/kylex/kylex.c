@@ -41,9 +41,7 @@ void matrix_init_user(void) {
 	#ifdef UNICODE_ENABLE
 	set_unicode_input_mode(UC_WINC);
 	#endif
-  #ifdef RGBLIGHT_ENABLE
-    rgblight_wait();
-  #endif
+  autoshift_disable();
   matrix_init_keymap();
 };
 
@@ -51,9 +49,6 @@ __attribute__ ((weak))
 void matrix_scan_keymap(void) {}
 
 void matrix_scan_user(void) {
-  #ifdef RGBLIGHT_ENABLE
-    rgblight_init_real();
-  #endif
   if (up) {
     register_code(KC_UP);
     unregister_code(KC_UP);
@@ -72,9 +67,7 @@ void suspend_power_down_kb(void)
   #ifdef RGB_MATRIX_ENABLE
     rgb_matrix_set_suspend_state(true);
   #endif
-  #ifdef RGBLIGHT_ENABLE
-    rgblight_disable();
-  #endif
+  suspend_power_down_user();
 }
 
 void suspend_wakeup_init_kb(void)
@@ -82,7 +75,5 @@ void suspend_wakeup_init_kb(void)
   #ifdef RGB_MATRIX_ENABLE
     rgb_matrix_set_suspend_state(false);
   #endif
-  #ifdef RGBLIGHT_ENABLE
-    rgblight_enable();
-  #endif
+  suspend_wakeup_init_user();
 }

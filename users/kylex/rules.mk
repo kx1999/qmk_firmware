@@ -9,6 +9,9 @@ endif
 ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
 	SRC += rgb_underglow.c
 endif
+ifeq ($(strip $(RGB_MATRIX_ENABLE)), WS2812)
+	SRC += rgb_matrix_settings.c
+endif
 
 ifeq ($(strip $(KYLEX_SONGS)), yes)
   OPT_DEFS += -DKYLEX_SONGS
@@ -30,7 +33,4 @@ ifeq ($(strip $(NUMPAD_LAYER)), yes)
 endif
 ifeq ($(strip $(MISC_LAYER)), yes)
 	OPT_DEFS += -DMISC_LAYER
-endif
-ifeq ($(strip $(RGB_MATRIX_ENABLE)), WS2812)
-	OPT_DEFS += -DRGB_MATRIX_ENABLE
 endif
