@@ -4,6 +4,7 @@ int TAP_CODE_DELAY = 0;
 static int prev = 0;
 bool ashift = false;
 rgb_config_t rgbset;
+bool rgblayer = false;
 static uint16_t timer;
 //#ifdef AUDIO_ENABLE
 //  float pt_disco[][2] = SONG(PLATINUM_DISCO);
@@ -203,10 +204,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return true;
       break;
-    case RGB_TOG...RGB_SPD:
+    case KC_RGBL:
       if (record->event.pressed) {
-      } else {
-        rgbset = rgb_matrix_config;
+        if (rgblayer) {
+          rgbset = rgb_matrix_config;
+          rgblayer = !rgblayer;
+        } else {
+          rgblayer = !rgblayer;
+        }
       }
       return true;
       break;

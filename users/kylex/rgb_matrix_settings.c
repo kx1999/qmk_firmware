@@ -1,23 +1,9 @@
 #include "kylex.h"
 
-// RGB Modes
-// 1 = Static
-// 2-5 = Breathing
-// 6-8 = Rainbow
-// 9-14 = Swirl (Left and right)
-// 15-20 = Snake (Left and right)
-// 21-23 = Nightrider
-// 24 = Christmas
-// 25-34 = Static Gradient
-
-const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {60, 30, 15};
-const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {60, 50, 40};
-const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {0, 0, 0, 0, 0};
 static uint8_t layer = _QWERTY;
 bool ashift;
 extern rgb_config_t rgbset;
 uint8_t rgbm = RGB_MATRIX_ALPHAS_MODS;
-HSV hsv;
 
 void rgb_matrix_indicators_user(void) {
   if (!ctxt) {
