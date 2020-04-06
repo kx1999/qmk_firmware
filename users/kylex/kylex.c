@@ -5,6 +5,7 @@ bool dn = false;
 bool caps = false;
 bool ctxt = false;
 const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
+extern rgb_config_t rgbset;
 
 #ifdef RGBLIGHT_ENABLE
 
@@ -41,8 +42,8 @@ void matrix_init_user(void) {
 	#ifdef UNICODE_ENABLE
 	set_unicode_input_mode(UC_WINC);
 	#endif
-  autoshift_disable();
   matrix_init_keymap();
+  rgbset = rgb_matrix_config;
 };
 
 __attribute__ ((weak))

@@ -2,7 +2,8 @@
 
 int TAP_CODE_DELAY = 0;
 static int prev = 0;
-static bool ashift = false;
+bool ashift = false;
+rgb_config_t rgbset;
 static uint16_t timer;
 //#ifdef AUDIO_ENABLE
 //  float pt_disco[][2] = SONG(PLATINUM_DISCO);
@@ -199,9 +200,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_ASTG:
       if (record->event.pressed) {
         ashift = !ashift;
-        return true;
-        break;
       }
+      return true;
+      break;
+    case RGB_TOG...RGB_SPD:
+      if (record->event.pressed) {
+      } else {
+        rgbset = rgb_matrix_config;
+      }
+      return true;
+      break;
   }
   return process_record_keymap(keycode, record);
 }

@@ -25,7 +25,7 @@ enum global_keycodes {
 #define KC_LOWR     TT(_LOWER)                                                                                                 // Tap toggle _LOWER layer
 #define KC_RASE     TT(_RAISE)                                                                                                 // Tap toggle _RAISE layer
 #define KC_NAV			MO(_NAV)
-#define KC_RGBL			MO(_RGBL)
+#define KC_RGBL			TG(_RGBL)
 #define KC_GAME			TG(_GAME)
 #define KC_NUMP     TG(_NUMPAD)                                                                                                // Toggle _NUMPAD layer
 
