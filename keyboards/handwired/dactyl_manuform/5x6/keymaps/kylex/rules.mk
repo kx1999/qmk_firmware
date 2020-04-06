@@ -22,13 +22,11 @@ FAUXCLICKY_ENABLE = no
 API_SYSEX_ENABLE = no
 KEY_LOCK_ENABLE = no
 
-RGB_MATRIX_ENABLE = WS2812  #WS2812
+RGB_MATRIX_ENABLE = WS2812		  #WS2812
 
 KYLEX_SONGS = no                  # Includes copyrighted songs
-HLD_RGB = no					  # Hyper Light Drifter colors
-PORTAL_RGB = no 				  # Portal colors
 TAP_DANCE_MACROS = yes            # Includes custom macros
 GAME_MODE = yes					  # Enables _GAME layer
-NUMPAD_LAYER = yes				  # Enables _NUMP layer
+NUMPAD_LAYER = no 				  # Enables _NUMP layer
 
 BOOTLOADER = dfu              	  # Defines bootloader

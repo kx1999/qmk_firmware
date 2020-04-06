@@ -14,19 +14,18 @@ const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {60, 30, 15};
 const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {60, 50, 40};
 const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {0, 0, 0, 0, 0};
 static uint8_t layer = _QWERTY;
-HSV hsv = {0, 0, 0};
+bool ashift;
+extern rgb_config_t rgbset;
+uint8_t rgbm = RGB_MATRIX_ALPHAS_MODS;
+HSV hsv;
 
 void rgb_matrix_indicators_user(void) {
   if (!ctxt) {
     if (caps) {
-      hsv.h = rgb_matrix_get_hue();
-      hsv.s = rgb_matrix_get_sat();
-      hsv.v = rgb_matrix_get_val();
       rgb_matrix_set_color( 18 , 255, 0  , 0  );
-    } else {
-      rgb_matrix_set_color( 18 ,hsv.h,hsv.s,hsv.v);
+      rgb_matrix_set_color( 28 , 255, 0  , 0  );
     }
-  }
+  } 
 }
 
 void led_set_user(uint8_t usb_led) {
@@ -35,89 +34,48 @@ void led_set_user(uint8_t usb_led) {
   } else {
     caps = false;
   }
-
-  if (!ctxt) {
-    if (caps) {
-      switch (layer) {
-        case _RAISE:
-          rgb_matrix_mode_noeeprom(1);
-          break;
-        case _LOWER:
-          rgb_matrix_mode_noeeprom(1);
-          break;
-        default:
-          rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-          break;
-        }
-    } else if (!caps) {
-      switch (layer) {
-        case _RAISE:
-          rgb_matrix_mode_noeeprom(1);
-          break;
-        case _LOWER:
-          rgb_matrix_mode_noeeprom(1);
-          break;
-        case _QWERTY:
-          rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-          break;
-        #ifdef GAME_MODE
-          case _GAME:
-            rgb_matrix_mode_noeeprom(1);
-            break;
-        #endif
-        #ifdef NUMPAD_LAYER
-          case _NUMPAD:
-            rgb_matrix_mode_noeeprom(1);
-            break;
-        #endif
-      }
-    }
-  }
 }
 
 uint32_t layer_state_set_user(uint32_t state) {
   layer = biton32(state);
     switch (layer) {
       case _RAISE:
-        if (caps && !ctxt) {
-          rgb_matrix_mode_noeeprom(1);
-        } else {
-          rgb_matrix_mode_noeeprom(1);
-        }
+        rgb_matrix_config.hsv.h = 19;
+        rgb_matrix_config.hsv.s = 255;
+        rgb_matrix_config.hsv.v = 125;
+        rgb_matrix_mode_noeeprom(1);
         break;
       case _LOWER:
-        if (caps && !ctxt) {
-          rgb_matrix_mode_noeeprom(1);
-        } else {
-          rgb_matrix_mode_noeeprom(1);
-        }
+        rgb_matrix_config.hsv.h = 147;
+        rgb_matrix_config.hsv.s = 240;
+        rgb_matrix_config.hsv.v = 125;
+        rgb_matrix_mode_noeeprom(1);
         break;
       case _QWERTY:
-        if (caps && !ctxt) {
-          rgb_matrix_mode_noeeprom(1);
-        } else {
-          rgb_matrix_mode_noeeprom(RGB_MATRIX_ALPHAS_MODS);
-          break;
-        }
+        autoshift_enable();
+        rgb_matrix_config.hsv.h = rgbset.hsv.h;
+        rgb_matrix_config.hsv.s = rgbset.hsv.s;
+        rgb_matrix_config.hsv.v = rgbset.hsv.v;
+        rgb_matrix_mode_noeeprom(rgbset.mode);
         break;
       #ifdef GAME_MODE
         case _GAME:
-          if (caps && !ctxt) {
-            rgb_matrix_mode_noeeprom(RGB_MATRIX_CYCLE_ALL);
-          } else {
-            rgb_matrix_mode_noeeprom(RGB_MATRIX_CYCLE_ALL);
-          }
+          autoshift_disable();
+          rgb_matrix_config.hsv.s = 255;
+          rgb_matrix_config.hsv.v = 125;
+          rgb_matrix_mode_noeeprom(RGB_MATRIX_CYCLE_ALL);
           break;
       #endif
-      #ifdef NUMPAD_LAYER
-        case _NUMPAD:
-          if (caps && !ctxt) {
-            rgb_matrix_mode_noeeprom(1);
-          } else {
-            rgb_matrix_mode_noeeprom(1);
-          }
-          break;
-      #endif
+      case _NAV:
+        rgb_matrix_config.hsv.s = 255;
+        rgb_matrix_config.hsv.v = 125;
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_JELLYBEAN_RAINDROPS);
+        break;
+      case _RGBL:
+        rgb_matrix_config.hsv.h = rgbset.hsv.h;
+        rgb_matrix_config.hsv.s = rgbset.hsv.s;
+        rgb_matrix_config.hsv.v = rgbset.hsv.v;
+        rgb_matrix_mode_noeeprom(rgbset.mode);
     }
   return state;
 }

@@ -21,7 +21,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                    +----+----+                       +----+----+
                          LALT,ENT ,                        SPC ,LGUI,
   //                    +----+----+--+                 +--+----+----+
-                            LSFT,LOWR,                  RASE,RSFT,
+                            LSFT,LOWR,                  RASE,GAME,
   //                       |----+----|                 |----+----|
                             NAV ,DSCR,                  HYP ,MDIA
   //                       +----+----+                 +----+----+
@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
      LCTL, A  , S  , D  , F  , G  ,                         H  , J  , K  , L  ,SCLN,QUOT,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-     LSFT, Z  , X  , C  , V  , B  ,                         N  , M  ,COMM,DOT ,SLSH,BSLS,
+     CSFT, Z  , X  , C  , V  , B  ,                         N  , M  ,COMM,DOT ,SLSH,BSLS,
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
                LBRC,RBRC,                                            MINS,EQL ,
   //          +----+----+                                           +----+----+
@@ -52,11 +52,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
      TILD,EXLM, AT ,HASH,DLR ,PERC,                        CIRC,AMPR,ASTR,LPRN,RPRN,    ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,ASTG,RSET,    ,    ,    ,                            ,    ,    ,    ,    ,    ,
+         ,RGBL,    ,    ,    ,    ,                            ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,HOME,SUP ,BTAB,FTAB,LPRN,                        RPRN,RTOG,RHUI,RSAI,RVAI,RSPI,
+         ,HOME,SUP ,BTAB,FTAB,LPRN,                        RPRN,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,END ,SDN ,BACK,FRWD,    ,                            ,RMOD,RHUD,RSAD,RSAD,RSPD,
+         ,END ,SDN ,BACK,FRWD,    ,                            ,    ,    ,    ,    ,    ,
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
                    ,    ,                                                ,    ,
   //          +----+----+                                           +----+----+
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
          ,    ,    ,    ,    ,    ,                            ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,                            ,    ,    ,    ,    ,    ,
+         ,RGBL,    ,    ,    ,    ,                            ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
          ,RTOG,RHUI,RSAI,RVAI,RSPI,                            ,RTOG,RHUI,RSAI,RVAI,RSPI,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
