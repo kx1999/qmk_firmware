@@ -2,6 +2,7 @@
 
 int TAP_CODE_DELAY = 0;
 static int prev = 0;
+static bool ashift = false;
 static uint16_t timer;
 //#ifdef AUDIO_ENABLE
 //  float pt_disco[][2] = SONG(PLATINUM_DISCO);
@@ -112,14 +113,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      	}
      	return false;
       break;
-    #ifdef UNICODE_ENABLE
     case KC_SHRG: // ¯\_(ツ)_/¯
       if (record->event.pressed) {
+        #ifdef UNICODE_ENABLE
         send_unicode_hex_string("00AF 005C 005F 0028 30C4 0029 005F 002F 00AF");
+        #endif
       }
       return false;
       break;
-    #endif
     case KC_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
       if (!record->event.pressed) {
       	uint8_t temp_mod = get_mods();
@@ -139,9 +140,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           SEND_STRING(":avrdude");
           #endif // bootloader options
         }
-        if (temp_mod & MOD_MASK_CTRL) {
-        	SEND_STRING(" -j8 --output-sync");
-        }
+        SEND_STRING(" -j8 --output-sync");
         SEND_STRING(SS_TAP(X_ENTER));
         set_mods(temp_mod);
       }
@@ -153,6 +152,56 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
+    case KC_NEXD:
+      if (record->event.pressed) {
+        register_code(KC_LGUI);
+        register_code(KC_LCTRL);
+        register_code(KC_RIGHT);
+        unregister_code(KC_LGUI);
+        unregister_code(KC_LCTRL);
+        unregister_code(KC_RIGHT);
+      }
+      return false;
+      break;
+    case KC_PRED:
+      if (record->event.pressed) {
+        register_code(KC_LGUI);
+        register_code(KC_LCTRL);
+        register_code(KC_LEFT);
+        unregister_code(KC_LGUI);
+        unregister_code(KC_LCTRL);
+        unregister_code(KC_LEFT);
+      }
+      return false;
+      break;
+    case KC_NEWD:
+      if (record->event.pressed) {
+        register_code(KC_LGUI);
+        register_code(KC_LCTRL);
+        register_code(KC_D);
+        unregister_code(KC_LGUI);
+        unregister_code(KC_LCTRL);
+        unregister_code(KC_D);
+      }
+      return false;
+      break;
+    case KC_CLOD:
+      if (record->event.pressed) {
+        register_code(KC_LGUI);
+        register_code(KC_LCTRL);
+        register_code(KC_F4);
+        unregister_code(KC_LGUI);
+        unregister_code(KC_LCTRL);
+        unregister_code(KC_F4);
+      }
+      return false;
+      break;
+    case KC_ASTG:
+      if (record->event.pressed) {
+        ashift = !ashift;
+        return true;
+        break;
+      }
   }
   return process_record_keymap(keycode, record);
 }

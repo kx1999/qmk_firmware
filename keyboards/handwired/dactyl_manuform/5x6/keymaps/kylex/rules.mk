@@ -1,4 +1,4 @@
-RGBLIGHT_ENABLE = yes             # Enable WS2812 RGB underlight
+RGBLIGHT_ENABLE = no              # Enable WS2812 RGB underlight
 LEADER_ENABLE = no                # Enable leader key chording
 SPLIT_KEYBOARD = yes              # Split keyboard
 NO_USB_STARTUP_CHECK = yes        # Disables usb suspend check after keyboard startup
@@ -22,12 +22,13 @@ FAUXCLICKY_ENABLE = no
 API_SYSEX_ENABLE = no
 KEY_LOCK_ENABLE = no
 
+RGB_MATRIX_ENABLE = WS2812  #WS2812
+
 KYLEX_SONGS = no                  # Includes copyrighted songs
-HLD_RGB = no											# Hyper Light Drifter colors
-PORTAL_RGB = no 									# Portal colors
+HLD_RGB = no					  # Hyper Light Drifter colors
+PORTAL_RGB = no 				  # Portal colors
 TAP_DANCE_MACROS = yes            # Includes custom macros
-GAME_MODE = yes										# Enables _GAME layer
-NUMPAD_LAYER = yes								# Enables _NUMP layer
+GAME_MODE = yes					  # Enables _GAME layer
+NUMPAD_LAYER = yes				  # Enables _NUMP layer
 
-BOOTLOADER = dfu              # Defines bootloader
-
+BOOTLOADER = dfu              	  # Defines bootloader

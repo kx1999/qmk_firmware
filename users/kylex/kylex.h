@@ -16,13 +16,12 @@ const uint8_t repeat;
 
 enum global_layers {
 	_QWERTY,
-	#ifdef GAME_MODE
-		_GAME,
-	#endif
+	_GAME,
 	_LOWER,
 	_RAISE,
 	_NUMPAD,
-	_MISC,
+	_NAV,
+	_RGBL,
 };
 
 void rgblight_wait(void);
