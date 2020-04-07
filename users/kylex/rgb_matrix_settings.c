@@ -51,6 +51,8 @@ uint32_t layer_state_set_user(uint32_t state) {
           autoshift_disable();
           rgb_matrix_config.hsv.s = 255;
           rgb_matrix_config.hsv.v = 125;
+          rgb_matrix_config.hsv.v = 125;
+          rgb_matrix_config.speed = 50;
           rgb_matrix_mode_noeeprom(RGB_MATRIX_CYCLE_ALL);
           break;
       #endif

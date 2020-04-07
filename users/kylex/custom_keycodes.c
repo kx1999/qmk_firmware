@@ -125,26 +125,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case KC_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
       if (!record->event.pressed) {
-      	uint8_t temp_mod = get_mods();
+      	uint8_t mods = get_mods();
         clear_mods();
-        SEND_STRING("make " QMK_KEYBOARD ":" QMK_KEYMAP);
-        #ifndef FLASH_BOOTLOADER
-        if (temp_mod & MOD_MASK_SHIFT)
-        #endif
-        {
-          #if defined(__arm__)
-          SEND_STRING(":dfu-util");
-          #elif defined(BOOTLOADER_DFU)
-          SEND_STRING(":dfu");
-          #elif defined(BOOTLOADER_HALFKAY)
-          SEND_STRING(":teensy");
-          #elif defined(BOOTLOADER_CATERINA)
-          SEND_STRING(":avrdude");
-          #endif // bootloader options
-        }
-        SEND_STRING(" -j8 --output-sync");
-        SEND_STRING(SS_TAP(X_ENTER));
-        set_mods(temp_mod);
+        send_string_with_delay_P(PSTR("qmk flash -kb " QMK_KEYBOARD " -km " QMK_KEYMAP "\n"), 1); //New way
+        set_mods(mods);
       }
       return false;
       break;
