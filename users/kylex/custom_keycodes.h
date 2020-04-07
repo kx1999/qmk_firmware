@@ -27,7 +27,7 @@ enum global_keycodes {
 #define KC_NAV			MO(_NAV)
 #define KC_RGBL			TG(_RGBL)
 #define KC_GAME			TG(_GAME)
-#define KC_NUMP     TG(_NUMPAD)                                                                                                // Toggle _NUMPAD layer
+#define KC_NUMP     TT(_NUMPAD)                                                                                                // Toggle _NUMPAD layer
 
 #define KC_FTAB     LCTL(KC_TAB)                                                                                               // Next tab
 #define KC_BTAB     LCTL(LSFT(KC_TAB))                                                                                         // Previous tab
