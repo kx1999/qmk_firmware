@@ -5,6 +5,7 @@ static int prev = 0;
 bool ashift = false;
 rgb_config_t rgbset;
 bool rgblayer = false;
+bool nav = false;
 static uint16_t timer;
 //#ifdef AUDIO_ENABLE
 //  float pt_disco[][2] = SONG(PLATINUM_DISCO);
@@ -199,6 +200,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return true;
       break;
+    case KC_NAV:
+      nav = !nav;
   }
   return process_record_keymap(keycode, record);
 }

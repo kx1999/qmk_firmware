@@ -1,8 +1,9 @@
 #include "kylex.h"
 
 static uint8_t layer = _QWERTY;
-bool ashift;
 extern rgb_config_t rgbset;
+extern bool nav;
+extern bool ashift;
 
 void rgb_matrix_indicators_user(void) {
   if (!ctxt) {
@@ -10,7 +11,18 @@ void rgb_matrix_indicators_user(void) {
       rgb_matrix_set_color( 18 , 125, 125, 125);
       rgb_matrix_set_color( 28 , 125, 125, 125);
     }
-  } 
+  }
+
+  if (nav) {
+    rgb_matrix_set_color( 9  , 125, 30 , 125);
+    rgb_matrix_set_color( 13 , 125, 30 , 125);
+    rgb_matrix_set_color( 14 , 125, 30 , 125);
+    rgb_matrix_set_color( 15 , 125, 30 , 125);
+    rgb_matrix_set_color( 20 , 125, 30 , 125);
+    rgb_matrix_set_color( 21 , 125, 30 , 125);
+    rgb_matrix_set_color( 26 , 125, 30 , 125);
+    rgb_matrix_set_color( 27 , 125, 30 , 125);
+  }
 }
 
 void led_set_user(uint8_t usb_led) {
@@ -39,7 +51,9 @@ uint32_t layer_state_set_user(uint32_t state) {
         rgb_matrix_mode_noeeprom(RGB_MATRIX_BREATHING);
         break;
       case _QWERTY:
-        autoshift_enable();
+        if (ashift) {
+          autoshift_enable();
+        }
         rgb_matrix_config.hsv.h = rgbset.hsv.h;
         rgb_matrix_config.hsv.s = rgbset.hsv.s;
         rgb_matrix_config.hsv.v = rgbset.hsv.v;
@@ -49,17 +63,14 @@ uint32_t layer_state_set_user(uint32_t state) {
       #ifdef GAME_MODE
         case _GAME:
           autoshift_disable();
+          rgb_matrix_config.hsv.h = 255;
           rgb_matrix_config.hsv.s = 255;
-          rgb_matrix_config.hsv.v = 125;
           rgb_matrix_config.hsv.v = 125;
           rgb_matrix_config.speed = 50;
           rgb_matrix_mode_noeeprom(RGB_MATRIX_CYCLE_ALL);
           break;
       #endif
       case _NAV:
-        rgb_matrix_config.hsv.s = 255;
-        rgb_matrix_config.hsv.v = 125;
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_JELLYBEAN_RAINDROPS);
         break;
       case _RGBL:
         rgb_matrix_config.hsv.h = rgbset.hsv.h;
@@ -67,6 +78,7 @@ uint32_t layer_state_set_user(uint32_t state) {
         rgb_matrix_config.hsv.v = rgbset.hsv.v;
         rgb_matrix_config.speed = rgbset.speed;
         rgb_matrix_mode_noeeprom(rgbset.mode);
+        break;
     }
   return state;
 }
