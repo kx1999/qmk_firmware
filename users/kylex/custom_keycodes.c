@@ -2,7 +2,7 @@
 
 int TAP_CODE_DELAY = 0;
 static int prev = 0;
-bool ashift = false;
+bool ashift = true;
 rgb_config_t rgbset;
 bool rgblayer = false;
 bool nav = false;
