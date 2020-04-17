@@ -9,7 +9,6 @@ void rgb_matrix_indicators_user(void) {
   if (!ctxt) {
     if (caps) {
       rgb_matrix_set_color( 18 , 125, 125, 125);
-      rgb_matrix_set_color( 28 , 125, 125, 125);
     }
   }
 
