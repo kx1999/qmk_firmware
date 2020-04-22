@@ -11,7 +11,7 @@ static uint16_t timer;
 //  float pt_disco[][2] = SONG(PLATINUM_DISCO);
 //#endif
 
-static struct {
+struct {
     bool on;
     bool first;
   } wtxt = {false, false};
@@ -103,6 +103,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         wtxt.on = !wtxt.on;
         wtxt.first = true;
+        if (!ctxt && !wtxt.on) {
+          autoshift_enable();
+        } else if (ctxt || wtxt.on) {
+          autoshift_disable();
+        }
       }
       return false;
       break;
@@ -113,6 +118,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           tap_code(KC_CAPS);
         }
         tap_code(KC_CAPS);
+        if (!ctxt && !wtxt.on) {
+          autoshift_enable();
+        } else if (ctxt || wtxt.on) {
+          autoshift_disable();
+        }
      	}
      	return false;
       break;

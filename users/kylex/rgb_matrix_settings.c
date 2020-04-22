@@ -4,6 +4,10 @@ static uint8_t layer = _QWERTY;
 extern rgb_config_t rgbset;
 extern bool nav;
 extern bool ashift;
+extern struct {
+    bool on;
+    bool first;
+  } wtxt;
 
 void rgb_matrix_indicators_user(void) {
   if (!ctxt) {
@@ -61,7 +65,11 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
       case _QWERTY:
         if (ashift) {
-          autoshift_enable();
+          if (!ctxt && !wtxt.on) {
+            autoshift_enable();
+          } else if (ctxt || wtxt.on) {
+            autoshift_disable();
+          }
         }
         rgb_matrix_config.hsv.h = rgbset.hsv.h;
         rgb_matrix_config.hsv.s = rgbset.hsv.s;
