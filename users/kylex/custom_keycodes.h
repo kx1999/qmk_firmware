@@ -26,7 +26,6 @@ enum global_keycodes {
 #define KC_RASE     TT(_RAISE)                                                                                                 // Tap toggle _RAISE layer
 #define KC_NAV			MO(_NAV)
 #define KC_RGBL			TG(_RGBL)
-#define KC_GAME			TG(_GAME)
 #define KC_NUMP     MO(_NUMPAD)                                                                                                // Toggle _NUMPAD layer
 
 #define KC_FTAB     LCTL(KC_TAB)                                                                                               // Next tab
@@ -34,6 +33,7 @@ enum global_keycodes {
 #define KC_MDIA     TD(MDIA)                                                                                                   // Tap 1 for Play/Pause Media, Tap 2 to Toggle RGB Underglow
 #define KC_HYP      TD(HY)                                                                                                     // HYP: Tap 1 for Printscreen, Tap 2 for Task Manager, Tap 3 to Ctrl+Alt+Del, Tap 4 to Sleep, Tap 5 to Shut Down, Tap 1 and Hold for Meh modifier, Tap 2 and Hold for Hyper modifier
 #define KC_DSCR     TD(DC)                                                                                                     // DSCR: Tap 1 for Discord mute, Tap 2 for Discord deafen, Tap 3 to Toggle _GAME layer
+#define KC_GAME			TD(GAME)
 #define KC_RSET			RESET
 
 #define KC_RTOG			RGB_TOG

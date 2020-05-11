@@ -21,9 +21,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                    +----+----+                       +----+----+
                          LALT,ENT ,                        SPC ,LGUI,
   //                    +----+----+--+                 +--+----+----+
-                            LSFT,LOWR,                  RASE,BSPC,
+                            LSFT,LOWR,                  RASE,GAME,
   //                       |----+----|                 |----+----|
-                            DSCR,NAV ,                  MDIA,HYP 
+                            DSCR,NAV ,                  MPLY,HYP 
   //                       +----+----+                 +----+----+
   ),
 
@@ -42,9 +42,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                    +----+----+                       +----+----+
                          LALT,SPC ,                         SPC,LGUI,
   //                    +----+----+--+                 +--+----+----+
-                            NUMP,ENT ,                  RASE,BSPC,
+                            NUMP,ENT ,                  RASE,GAME,
   //                       |----+----|                 |----+----|
-                            DSCR,GRV ,                  MDIA,HYP 
+                            DSCR,GRV ,                  MPLY,HYP 
   //                       +----+----+                 +----+----+
   ),
 
