@@ -41,7 +41,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	//#define RGB_DISABLE_AFTER_TIMEOUT 0 // number of ticks to wait until disabling effects
 	#define RGB_DISABLE_WHEN_USB_SUSPENDED true // turn off effects when suspended
 	#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-	//#define RGB_MATRIX_LED_PROCESS_LIMIT (DRIVER_LED_TOTAL + 4) / 5 // limits the number of LEDs to process in an animation per task run (increases keyboard responsiveness)
+	#define RGB_MATRIX_LED_PROCESS_LIMIT (DRIVER_LED_TOTAL + 4) / 5 // limits the number of LEDs to process in an animation per task run (increases keyboard responsiveness)
 	#define RGB_MATRIX_LED_FLUSH_LIMIT 16 // limits in milliseconds how frequently an animation will update the LEDs. 16 (16ms) is equivalent to limiting to 60fps (increases keyboard responsiveness)
 	#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 125 // limits maximum brightness of LEDs to 150 out of 255. Higher may cause the controller to crash. 
 	#define RGB_MATRIX_HUE_STEP 2
@@ -53,9 +53,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	 * because they take up a lot of space.  Disable until you can successfully compile your firmware. */
 	
 	//#define DISABLE_RGB_MATRIX_ALPHAS_MODS
-	//#define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN
-	//#define DISABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
-	#define DISABLE_RGB_MATRIX_BREATHING
+	#define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN
+	#define DISABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
+	//#define DISABLE_RGB_MATRIX_BREATHING
 	#define DISABLE_RGB_MATRIX_BAND_SAT
 	#define DISABLE_RGB_MATRIX_BAND_VAL
 	#define DISABLE_RGB_MATRIX_BAND_PINWHEEL_SAT
@@ -66,10 +66,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	#define DISABLE_RGB_MATRIX_CYCLE_LEFT_RIGHT
 	#define DISABLE_RGB_MATRIX_CYCLE_UP_DOWN
 	#define DISABLE_RGB_MATRIX_CYCLE_OUT_IN
-	#define DISABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL
+	//#define DISABLE_RGB_MATRIX_CYCLE_OUT_IN_DUAL
 	#define DISABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON
-	//#define DISABLE_RGB_MATRIX_DUAL_BEACON
-	//#define DISABLE_RGB_MATRIX_CYCLE_PINWHEEL
+	#define DISABLE_RGB_MATRIX_DUAL_BEACON
+	#define DISABLE_RGB_MATRIX_CYCLE_PINWHEEL
 	#define DISABLE_RGB_MATRIX_CYCLE_SPIRAL
 	#define DISABLE_RGB_MATRIX_RAINBOW_BEACON
 	#define DISABLE_RGB_MATRIX_RAINBOW_PINWHEELS
@@ -88,5 +88,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	#define DISABLE_RGB_MATRIX_SPLASH
 	//#define DISABLE_RGB_MATRIX_MULTISPLASH
 	#define DISABLE_RGB_MATRIX_SOLID_SPLASH
-	#define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
+	//#define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif

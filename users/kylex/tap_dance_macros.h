@@ -12,7 +12,7 @@ enum {
 enum {
   HY = 0,
   DC,
-  MDIA,
+  GAME,
 };
 #endif
 

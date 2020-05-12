@@ -1,31 +1,41 @@
 #include "kylex.h"
 
-// RGB Modes
-// 1 = Static
-// 2-5 = Breathing
-// 6-8 = Rainbow
-// 9-14 = Swirl (Left and right)
-// 15-20 = Snake (Left and right)
-// 21-23 = Nightrider
-// 24 = Christmas
-// 25-34 = Static Gradient
-
-const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {60, 30, 15};
-const uint8_t RGBLED_SNAKE_INTERVALS[] PROGMEM = {60, 50, 40};
-const uint8_t RGBLED_GRADIENT_RANGES[] PROGMEM = {0, 0, 0, 0, 0};
 static uint8_t layer = _QWERTY;
-bool ashift;
 extern rgb_config_t rgbset;
-uint8_t rgbm = RGB_MATRIX_ALPHAS_MODS;
-HSV hsv;
+extern bool nav;
+extern bool ashift;
+extern struct {
+    bool on;
+    bool first;
+  } wtxt;
 
 void rgb_matrix_indicators_user(void) {
   if (!ctxt) {
     if (caps) {
-      rgb_matrix_set_color( 18 , 255, 0  , 0  );
-      rgb_matrix_set_color( 28 , 255, 0  , 0  );
+      rgb_matrix_set_color( 18 , 125, 125, 125);
     }
-  } 
+  }
+
+  if (nav) {
+    //Left side
+    rgb_matrix_set_color( 9  , 125, 30 , 125);
+    rgb_matrix_set_color( 13 , 125, 30 , 125);
+    rgb_matrix_set_color( 14 , 125, 30 , 125);
+    rgb_matrix_set_color( 15 , 125, 30 , 125);
+    rgb_matrix_set_color( 20 , 125, 30 , 125);
+    rgb_matrix_set_color( 21 , 125, 30 , 125);
+    rgb_matrix_set_color( 26 , 125, 30 , 125);
+    rgb_matrix_set_color( 27 , 125, 30 , 125);
+    //Right side
+    rgb_matrix_set_color( 41 , 125, 30 , 125);
+    rgb_matrix_set_color( 45 , 125, 30 , 125);
+    rgb_matrix_set_color( 46 , 125, 30 , 125);
+    rgb_matrix_set_color( 47 , 125, 30 , 125);
+    rgb_matrix_set_color( 52 , 125, 30 , 125);
+    rgb_matrix_set_color( 53 , 125, 30 , 125);
+    rgb_matrix_set_color( 58 , 125, 30 , 125);
+    rgb_matrix_set_color( 59 , 125, 30 , 125);
+  }
 }
 
 void led_set_user(uint8_t usb_led) {
@@ -43,39 +53,49 @@ uint32_t layer_state_set_user(uint32_t state) {
         rgb_matrix_config.hsv.h = 19;
         rgb_matrix_config.hsv.s = 255;
         rgb_matrix_config.hsv.v = 125;
-        rgb_matrix_mode_noeeprom(1);
+        rgb_matrix_config.speed = 255;
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_BREATHING);
         break;
       case _LOWER:
         rgb_matrix_config.hsv.h = 147;
         rgb_matrix_config.hsv.s = 240;
         rgb_matrix_config.hsv.v = 125;
-        rgb_matrix_mode_noeeprom(1);
+        rgb_matrix_config.speed = 255;
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_BREATHING);
         break;
       case _QWERTY:
-        autoshift_enable();
+        if (ashift) {
+          if (!ctxt && !wtxt.on) {
+            autoshift_enable();
+          } else if (ctxt || wtxt.on) {
+            autoshift_disable();
+          }
+        }
         rgb_matrix_config.hsv.h = rgbset.hsv.h;
         rgb_matrix_config.hsv.s = rgbset.hsv.s;
         rgb_matrix_config.hsv.v = rgbset.hsv.v;
+        rgb_matrix_config.speed = rgbset.speed;
         rgb_matrix_mode_noeeprom(rgbset.mode);
         break;
       #ifdef GAME_MODE
         case _GAME:
           autoshift_disable();
+          rgb_matrix_config.hsv.h = 255;
           rgb_matrix_config.hsv.s = 255;
           rgb_matrix_config.hsv.v = 125;
+          rgb_matrix_config.speed = 50;
           rgb_matrix_mode_noeeprom(RGB_MATRIX_CYCLE_ALL);
           break;
       #endif
       case _NAV:
-        rgb_matrix_config.hsv.s = 255;
-        rgb_matrix_config.hsv.v = 125;
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_JELLYBEAN_RAINDROPS);
         break;
       case _RGBL:
         rgb_matrix_config.hsv.h = rgbset.hsv.h;
         rgb_matrix_config.hsv.s = rgbset.hsv.s;
         rgb_matrix_config.hsv.v = rgbset.hsv.v;
+        rgb_matrix_config.speed = rgbset.speed;
         rgb_matrix_mode_noeeprom(rgbset.mode);
+        break;
     }
   return state;
 }
