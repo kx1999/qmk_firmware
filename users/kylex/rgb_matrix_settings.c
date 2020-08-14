@@ -83,8 +83,8 @@ uint32_t layer_state_set_user(uint32_t state) {
           rgb_matrix_config.hsv.h = 255;
           rgb_matrix_config.hsv.s = 255;
           rgb_matrix_config.hsv.v = 125;
-          rgb_matrix_config.speed = 50;
-          rgb_matrix_mode_noeeprom(RGB_MATRIX_CYCLE_ALL);
+          rgb_matrix_config.speed = 20;
+          rgb_matrix_mode_noeeprom(RGB_MATRIX_CYCLE_ALL+1);
           break;
       #endif
       case _NAV:
