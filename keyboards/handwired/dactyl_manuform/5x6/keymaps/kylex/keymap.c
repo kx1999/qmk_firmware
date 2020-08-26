@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                LBRC,RBRC,                                            MINS,EQL ,
   //          +----+----+                                           +----+----+
   //                    +----+----+                       +----+----+
-                         LALT,SPC ,                         SPC,LGUI,
+                         LALT,SPC ,                        SPC ,LGUI,
   //                    +----+----+--+                 +--+----+----+
                             NUMP,ENT ,                  RASE,GAME,
   //                       |----+----|                 |----+----|
@@ -50,13 +50,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT_5x6_kc(
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
-     TILD,EXLM, AT ,HASH,DLR ,PERC,                        CIRC,AMPR,ASTR,LPRN,RPRN,    ,
+     F12 , F1 , F2 , F3 , F4 , F5 ,                         F6 , F7 , F8 , F9 ,F10 ,F11 ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,RGBL,ASTG,    ,    ,    ,                            ,    ,    ,    ,    ,    ,
+         ,RGBL,WTXT,CTXT,ASTG,    ,                            ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,HOME,SUP ,BTAB,FTAB,LPRN,                        RPRN,    ,    ,    ,    ,    ,
+         ,HOME,SUP ,BTAB,FTAB,PGUP,                            ,    ,    ,    ,    ,    ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,END ,SDN ,BACK,FRWD,    ,                            ,    ,    ,    ,    ,    ,
+         ,END ,SDN ,BACK,FRWD,PGDN,                            ,    ,    ,    ,    ,    ,
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
                    ,    ,                                                ,    ,
   //          +----+----+                                           +----+----+
@@ -74,13 +74,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
      F12 , F1 , F2 , F3 , F4 , F5 ,                         F6 , F7 , F8 , F9 ,F10 ,F11 ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,WTXT,CTXT, UP ,    ,    ,                            ,MPRV, UP ,MNXT,VOLU,PGUP,
+         ,    ,    , UP ,    ,    ,                            ,MPRV, UP ,MNXT,VOLU,    ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,    ,LEFT,DOWN,RGHT,    ,                            ,LEFT,DOWN,RGHT,VOLD,PGDN,
+         ,    ,LEFT,DOWN,RGHT,    ,                            ,LEFT,DOWN,RGHT,VOLD,    ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,    ,    ,    ,    ,    ,                            ,CALC,MYCM,INS ,BTAB,FTAB,
+         ,    ,    ,    ,    ,    ,                            ,CALC,MYCM,INS ,    ,    ,
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
-                   ,    ,                                                ,    ,
+                   ,    ,                                            BTAB,FTAB,
   //          +----+----+                                           +----+----+
   //                    +----+----+                       +----+----+
                              ,    ,                            ,    ,
