@@ -80,10 +80,10 @@ uint32_t layer_state_set_user(uint32_t state) {
       #ifdef GAME_MODE
         case _GAME:
           autoshift_disable();
-          rgb_matrix_config.hsv.h = 90;
+          rgb_matrix_config.hsv.h = 183;
           rgb_matrix_config.hsv.s = 255;
           rgb_matrix_config.hsv.v = 125;
-          rgb_matrix_config.speed = 80;
+          rgb_matrix_config.speed = 65;
           rgb_matrix_mode_noeeprom(RGB_MATRIX_GRADIENT_UP_DOWN);
           break;
       #endif
