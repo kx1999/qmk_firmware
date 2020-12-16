@@ -22,7 +22,8 @@ FAUXCLICKY_ENABLE = no
 API_SYSEX_ENABLE = no
 KEY_LOCK_ENABLE = no
 
-RGB_MATRIX_ENABLE = WS2812		  #WS2812
+RGB_MATRIX_ENABLE = yes 		  # WS2812
+RGB_MATRIX_DRIVER = WS2812
 
 KYLEX_SONGS = no                  # Includes copyrighted songs
 TAP_DANCE_MACROS = yes            # Includes custom macros

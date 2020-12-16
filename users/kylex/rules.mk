@@ -9,7 +9,7 @@ endif
 ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
 	SRC += rgb_underglow.c
 endif
-ifeq ($(strip $(RGB_MATRIX_ENABLE)), WS2812)
+ifeq ($(strip $(RGB_MATRIX_ENABLE)), yes)
 	SRC += rgb_matrix_settings.c
 endif
 
