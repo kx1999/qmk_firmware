@@ -74,9 +74,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
      F12 , F1 , F2 , F3 , F4 , F5 ,                         F6 , F7 , F8 , F9 ,F10 ,F11 ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,    ,    , UP ,    ,    ,                            ,MPRV, UP ,MNXT,VOLU,SPUP,
+         ,    ,    , UP ,    ,    ,                            ,MPRV, UP ,MNXT,VOLU,SUP ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
-         ,    ,LEFT,DOWN,RGHT,    ,                        PGUP,LEFT,DOWN,RGHT,VOLD,SPDN,
+         ,    ,LEFT,DOWN,RGHT,    ,                        PGUP,LEFT,DOWN,RGHT,VOLD,SDN ,
   //|----+----+----+----+----+----|                       |----+----+----+----+----+----|
          ,    ,    ,    ,    ,    ,                        PGDN,CALC,MYCM,INS ,BTAB,FTAB,
   //+----+----+----+----+----+----+                       +----+----+----+----+----+----+
