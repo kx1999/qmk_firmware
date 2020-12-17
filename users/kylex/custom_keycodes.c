@@ -50,11 +50,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case KC_LOWR:
     case _LOWER:
-      rgbset = rgb_matrix_config;
+      if (!game) {
+        rgbset = rgb_matrix_config;
+      }
       return true;
       break;
     case KC_RASE:
-      rgbset = rgb_matrix_config;
+      if (!game) {
+        rgbset = rgb_matrix_config;
+      }
       return true;
       break;
     case KC_GAME:
