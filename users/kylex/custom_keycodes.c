@@ -1,12 +1,11 @@
 #include "kylex.h"
 
 int TAP_CODE_DELAY = 0;
-static int prev = 0;
 bool ashift = true;
 rgb_config_t rgbset;
 bool rgblayer = false;
 bool nav = false;
-static uint16_t timer;
+bool game = false;
 //#ifdef AUDIO_ENABLE
 //  float pt_disco[][2] = SONG(PLATINUM_DISCO);
 //#endif
@@ -50,36 +49,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   switch (keycode) {
     case KC_LOWR:
-      if (record->event.pressed) {
-        prev = 0;
-        if (layer_state_is(_RAISE)) {
-          prev = 2;
-        } else {
-          prev = 0;
-        }
-        layer_off(_RAISE);
-        timer = timer_read();
-      } else if ((prev == 2) && (timer_elapsed(timer) > TAPPING_TERM)) {
-        layer_on(_RAISE);
-      } else if ((prev == 0) && (timer_elapsed(timer) > TAPPING_TERM)) {
-        layer_off(_RAISE);
-      }
+    case _LOWER:
+      rgbset = rgb_matrix_config;
       return true;
       break;
     case KC_RASE:
+      rgbset = rgb_matrix_config;
+      return true;
+      break;
+    case KC_GAME:
       if (record->event.pressed) {
-        prev = 0;
-        if (layer_state_is(_LOWER)) {
-          prev = 1;
-        } else {
-          prev = 0;
-        }
-        layer_off(_LOWER);
-        timer = timer_read();
-      } else if ((prev == 1) && (timer_elapsed(timer) > TAPPING_TERM)) {
-        layer_on(_LOWER);
-      } else if ((prev == 0) && (timer_elapsed(timer) > TAPPING_TERM)) {
-        layer_off(_LOWER);
+        game = !game;
       }
       return true;
       break;
@@ -126,14 +106,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
      	}
      	return false;
       break;
-    case KC_SHRG: // ¯\_(ツ)_/¯
-      if (record->event.pressed) {
-        #ifdef UNICODE_ENABLE
-        send_unicode_hex_string("00AF 005C 005F 0028 30C4 0029 005F 002F 00AF");
-        #endif
-      }
-      return false;
-      break;
     case KC_MAKE:  // Compiles the firmware, and adds the flash command based on keyboard bootloader
       if (!record->event.pressed) {
       	uint8_t mods = get_mods();
@@ -145,7 +117,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case KC_VRSN: // Prints firmware version
       if (record->event.pressed) {
-        send_string_with_delay_P(PSTR(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE), TAP_CODE_DELAY);
+        send_string_with_delay_P(PSTR(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION ", Built on: " QMK_BUILDDATE), 1);
       }
       return false;
       break;
@@ -196,17 +168,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_ASTG:
       if (record->event.pressed) {
         ashift = !ashift;
-      }
-      return true;
-      break;
-    case KC_RGBL:
-      if (record->event.pressed) {
-        if (rgblayer) {
-          rgbset = rgb_matrix_config;
-          rgblayer = !rgblayer;
-        } else {
-          rgblayer = !rgblayer;
-        }
       }
       return true;
       break;

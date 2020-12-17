@@ -19,9 +19,9 @@ enum global_layers {
 	_GAME,
 	_LOWER,
 	_RAISE,
+	_ADJUST,
 	_NUMPAD,
 	_NAV,
-	_RGBL,
 };
 
 void rgblight_wait(void);
