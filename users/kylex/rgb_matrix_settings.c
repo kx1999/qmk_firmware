@@ -24,23 +24,23 @@ void rgb_matrix_indicators_user(void) {
 
   if (nav) {
     //Left side
-    rgb_matrix_set_color( 9  , 125, 30 , 125);
-    rgb_matrix_set_color( 13 , 125, 30 , 125);
-    rgb_matrix_set_color( 14 , 125, 30 , 125);
-    rgb_matrix_set_color( 15 , 125, 30 , 125);
-    rgb_matrix_set_color( 20 , 125, 30 , 125);
-    rgb_matrix_set_color( 21 , 125, 30 , 125);
-    rgb_matrix_set_color( 26 , 125, 30 , 125);
-    rgb_matrix_set_color( 27 , 125, 30 , 125);
+    rgb_matrix_set_color( 9  , 30 , 30 , 125);
+    rgb_matrix_set_color( 13 , 30 , 30 , 125);
+    rgb_matrix_set_color( 14 , 30 , 30 , 125);
+    rgb_matrix_set_color( 15 , 30 , 30 , 125);
+    rgb_matrix_set_color( 20 , 30 , 30 , 125);
+    rgb_matrix_set_color( 21 , 30 , 30 , 125);
+    rgb_matrix_set_color( 26 , 30 , 30 , 125);
+    rgb_matrix_set_color( 27 , 30 , 30 , 125);
     //Right side
-    rgb_matrix_set_color( 41 , 125, 30 , 125);
-    rgb_matrix_set_color( 45 , 125, 30 , 125);
-    rgb_matrix_set_color( 46 , 125, 30 , 125);
-    rgb_matrix_set_color( 47 , 125, 30 , 125);
-    rgb_matrix_set_color( 52 , 125, 30 , 125);
-    rgb_matrix_set_color( 53 , 125, 30 , 125);
-    rgb_matrix_set_color( 58 , 125, 30 , 125);
-    rgb_matrix_set_color( 59 , 125, 30 , 125);
+    rgb_matrix_set_color( 41 , 30 , 30 , 125);
+    rgb_matrix_set_color( 45 , 30 , 30 , 125);
+    rgb_matrix_set_color( 46 , 30 , 30 , 125);
+    rgb_matrix_set_color( 47 , 30 , 30 , 125);
+    rgb_matrix_set_color( 52 , 30 , 30 , 125);
+    rgb_matrix_set_color( 53 , 30 , 30 , 125);
+    rgb_matrix_set_color( 58 , 30 , 30 , 125);
+    rgb_matrix_set_color( 59 , 30 , 30 , 125);
   }
 }
 
