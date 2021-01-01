@@ -5,6 +5,7 @@ extern rgb_config_t rgbset;
 extern bool nav;
 extern bool game;
 extern bool ashift;
+extern bool rgbt;
 extern struct {
   bool on;
   bool first;
@@ -17,7 +18,7 @@ void rgb_matrix_indicators_user(void) {
     }
   }
 
-  if (!game) {
+  if (!game && rgbt) {
     rgb_matrix_set_color( 31 , 0  , 60 , 125);
     rgb_matrix_set_color( 63 , 125, 40 , 0  );
   }

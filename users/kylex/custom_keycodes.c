@@ -6,6 +6,7 @@ rgb_config_t rgbset;
 bool rgblayer = false;
 bool nav = false;
 bool game = false;
+bool rgbt = true;
 //#ifdef AUDIO_ENABLE
 //  float pt_disco[][2] = SONG(PLATINUM_DISCO);
 //#endif
@@ -181,6 +182,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       nav = !nav;
       return true;
       break;
+    case KC_RTOG:
+      if (record->event.pressed) {
+        rgbt = !rgbt;
+        return true;
+        break;
+      }
   }
   return process_record_keymap(keycode, record);
 }
