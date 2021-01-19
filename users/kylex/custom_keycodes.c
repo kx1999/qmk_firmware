@@ -184,6 +184,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case KC_RTOG:
       if (record->event.pressed) {
+        return true;
+        break;
+      } else {
         rgbt = !rgbt;
         return true;
         break;
