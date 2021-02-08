@@ -49,8 +49,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	}
 
   switch (keycode) {
+    case KC_QWER:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_QWERTY);
+      }
+      return false;
+      break;
+    case KC_COLE:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_COLEMAK);
+      }
+      return false;
+      break;
+    case KC_DVOR:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_DVORAK);
+      }
+      return false;
+      break;
     case KC_LOWR:
-    case _LOWER:
       if (!game) {
         rgbset = rgb_matrix_config;
       }

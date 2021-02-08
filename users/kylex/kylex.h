@@ -16,6 +16,8 @@ const uint8_t repeat;
 
 enum global_layers {
 	_QWERTY,
+	_COLEMAK,
+	_DVORAK,
 	_GAME,
 	_LOWER,
 	_RAISE,
