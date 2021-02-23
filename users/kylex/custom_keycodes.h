@@ -6,6 +6,7 @@ enum global_keycodes {
 	KC_SUP = SAFE_RANGE,
 	KC_SDN,
 	KC_QWER,
+	KC_GTST,
 	KC_COLE,
 	KC_DVOR,
 	KC_CTXT,
