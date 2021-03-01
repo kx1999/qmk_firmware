@@ -36,6 +36,7 @@ enum global_keycodes {
 #define KC_HYP      TD(HY)                                                                                                     // HYP: Tap 1 for Printscreen, Tap 2 for Task Manager, Tap 3 to Ctrl+Alt+Del, Tap 4 to Sleep, Tap 5 to Shut Down, Tap 1 and Hold for Meh modifier, Tap 2 and Hold for Hyper modifier
 #define KC_DSCR     TD(DC)                                                                                                     // DSCR: Tap 1 for Discord mute, Tap 2 for Discord deafen, Tap 3 to Toggle _GAME layer
 #define KC_GAME		TG(_GAME)
+#define KC_GTST		TG(_GAMETEST)
 #define KC_RSET		RESET
 
 #define KC_RTOG		RGB_TOG

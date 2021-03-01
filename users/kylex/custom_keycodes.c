@@ -55,12 +55,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
       break;
-    case KC_GTST:
-      if (record->event.pressed) {
-        set_single_persistent_default_layer(_GAMETEST);
-      }
-      return false;
-      break;
     case KC_COLE:
       if (record->event.pressed) {
         set_single_persistent_default_layer(_COLEMAK);
