@@ -87,6 +87,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return true;
       break;
+    case KC_GTST:
+      if (record->event.pressed) {
+        break;
+      } else {
+        layer_invert(_GAME);
+        game = !game;
+      }
+      return true;
+      break;
     case KC_SUP:
       if (record->event.pressed) {
         up = true;
