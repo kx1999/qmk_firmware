@@ -2,7 +2,9 @@
 
 int TAP_CODE_DELAY = 0;
 bool ashift = true;
+#ifdef RGB_MATRIX_ENABLE
 rgb_config_t rgbset;
+#endif
 bool rgblayer = false;
 bool nav = false;
 bool game = false;
@@ -69,13 +71,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case KC_LOWR:
       if (!game) {
+        #ifdef RGB_MATRIX_ENABLE
         rgbset = rgb_matrix_config;
+        #endif
       }
       return true;
       break;
     case KC_RASE:
       if (!game) {
+        #ifdef RGB_MATRIX_ENABLE
         rgbset = rgb_matrix_config;
+        #endif
       }
       return true;
       break;
@@ -83,6 +89,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         break;
       } else {
+        if (game) {
+          if (ashift) {
+            if (!ctxt && !wtxt.on) {
+              autoshift_enable();
+            } else if (ctxt || wtxt.on) {
+              autoshift_disable();
+            }
+          }  
+        } else {
+          autoshift_disable();
+        }
         game = !game;
       }
       return true;
