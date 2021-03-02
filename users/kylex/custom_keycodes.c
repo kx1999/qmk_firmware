@@ -109,6 +109,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
       } else {
         layer_invert(_GAME);
+        if (game) {
+          if (ashift) {
+            if (!ctxt && !wtxt.on) {
+              autoshift_enable();
+            } else if (ctxt || wtxt.on) {
+              autoshift_disable();
+            }
+          }  
+        } else {
+          autoshift_disable();
+        }
         game = !game;
       }
       return true;
