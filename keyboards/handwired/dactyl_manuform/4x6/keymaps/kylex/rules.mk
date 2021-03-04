@@ -28,6 +28,6 @@ RGB_MATRIX_DRIVER = WS2812
 KYLEX_SONGS = no                  # Includes copyrighted songs
 TAP_DANCE_MACROS = yes            # Includes custom macros
 GAME_MODE = no					  # Enables _GAME layer
-NUMPAD_LAYER = yes 				  # Enables _NUMP layer
+NUMPAD_LAYER = no 			  	  # Enables _NUMP layer
 
 BOOTLOADER = dfu              	  # Defines bootloader
