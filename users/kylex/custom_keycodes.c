@@ -233,7 +233,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       return true;
       break;
     case KC_NAV:
-      nav = !nav;
+      if (record->event.pressed) {
+        nav = !nav;
+      }
       return true;
       break;
     case KC_RTOG:
