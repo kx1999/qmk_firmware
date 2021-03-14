@@ -53,7 +53,7 @@ void led_set_user(uint8_t usb_led) {
   }
 }
 
-uint32_t layer_state_set_user(uint32_t state) {
+layer_state_t layer_state_set_rgb(uint32_t state) {
   layer = biton32(state);
   switch (layer) {
     case _QWERTY:
@@ -65,6 +65,5 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
     #endif
   }
-  state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-  return state;
+  return layer_state_set_keymap(state);
 }
