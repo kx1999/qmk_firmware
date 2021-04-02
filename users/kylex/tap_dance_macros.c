@@ -36,6 +36,7 @@ void hyp_f (qk_tap_dance_state_t *state, void *user_data) {
       register_code(KC_LSHIFT);
       register_code(KC_LCTRL);
       register_code(KC_LALT);
+      register_code(KC_LGUI);
       break;
     case DOUBLE_TAP:
       register_code(KC_LSHIFT);
@@ -58,6 +59,7 @@ void hyp_r (qk_tap_dance_state_t *state, void *user_data) {
       unregister_code(KC_LSHIFT);
       unregister_code(KC_LCTRL);
       unregister_code(KC_LALT);
+      unregister_code(KC_LGUI);
       break;
   }
 }
@@ -67,30 +69,30 @@ void dsc_f (qk_tap_dance_state_t *state, void *user_data) {
   switch (tap_state.state) {
     case SINGLE_TAP:
       register_code(KC_LSHIFT);
-      register_code(KC_LCTRL);
+      //register_code(KC_LCTRL);
       register_code(KC_LALT);
       register_code(KC_LGUI);
       register_code(KC_M);
       unregister_code(KC_LSHIFT);
-      unregister_code(KC_LCTRL);
+      //unregister_code(KC_LCTRL);
       unregister_code(KC_LALT);
       unregister_code(KC_LGUI);
       unregister_code(KC_M);
       break;
     case SINGLE_HOLD:
       register_code(KC_LSHIFT);
-      register_code(KC_LCTRL);
+      //register_code(KC_LCTRL);
       register_code(KC_LALT);
       register_code(KC_LGUI);
       break;
     case DOUBLE_TAP:
       register_code(KC_LSHIFT);
-      register_code(KC_LCTRL);
+      //register_code(KC_LCTRL);
       register_code(KC_LALT);
       register_code(KC_LGUI);
       register_code(KC_D);
       unregister_code(KC_LSHIFT);
-      unregister_code(KC_LCTRL);
+      //unregister_code(KC_LCTRL);
       unregister_code(KC_LALT);
       unregister_code(KC_LGUI);
       unregister_code(KC_D);
@@ -102,7 +104,7 @@ void dsc_r (qk_tap_dance_state_t *state, void *user_data) {
   switch (tap_state.state) {
     case SINGLE_HOLD:
       unregister_code(KC_LSHIFT);
-      unregister_code(KC_LCTRL);
+      //unregister_code(KC_LCTRL);
       unregister_code(KC_LALT);
       unregister_code(KC_LGUI);
       break;

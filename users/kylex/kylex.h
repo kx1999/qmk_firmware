@@ -16,14 +16,19 @@ const uint8_t repeat;
 
 enum global_layers {
 	_QWERTY,
+	_COLEMAK,
+	_DVORAK,
+	_GAMETEST,
 	_GAME,
 	_LOWER,
 	_RAISE,
+	_ADJUST,
 	_NUMPAD,
 	_NAV,
-	_RGBL,
 };
-
+layer_state_t layer_state_set_keymap(uint32_t state);
+layer_state_t layer_state_set_rgb(uint32_t state);
+layer_state_t layer_state_set_user(uint32_t state);
 void rgblight_wait(void);
 void rgblight_init_real(void);
 void matrix_init_user(void);

@@ -5,7 +5,10 @@ bool dn = false;
 bool caps = false;
 bool ctxt = false;
 const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
+//static uint8_t layer = _QWERTY;
+#ifdef RGB_MATRIX_ENABLE
 extern rgb_config_t rgbset;
+#endif
 
 __attribute__ ((weak))
 void matrix_init_keymap(void) {}
@@ -15,8 +18,25 @@ void matrix_init_user(void) {
 	set_unicode_input_mode(UC_WINC);
 	#endif
   matrix_init_keymap();
+  #ifdef RGB_MATRIX_ENABLE
   rgbset = rgb_matrix_config;
+  #endif
 };
+
+__attribute__ ((weak))
+layer_state_t layer_state_set_keymap(uint32_t state) {
+  return state;
+}
+
+__attribute__ ((weak))
+layer_state_t layer_state_set_rgb(uint32_t state) {
+  return layer_state_set_keymap(state);
+}
+
+layer_state_t layer_state_set_user(uint32_t state) {
+  state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+  return layer_state_set_rgb(state);
+}
 
 __attribute__ ((weak))
 void matrix_scan_keymap(void) {}

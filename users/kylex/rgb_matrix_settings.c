@@ -3,38 +3,45 @@
 static uint8_t layer = _QWERTY;
 extern rgb_config_t rgbset;
 extern bool nav;
+extern bool game;
 extern bool ashift;
+extern bool rgbt;
 extern struct {
-    bool on;
-    bool first;
-  } wtxt;
+  bool on;
+  bool first;
+} wtxt;
 
 void rgb_matrix_indicators_user(void) {
   if (!ctxt) {
     if (caps) {
-      rgb_matrix_set_color( 18 , 125, 125, 125);
+      rgb_matrix_set_color( 18 , 125, 0  , 0  );
     }
+  }
+
+  if (!game && rgbt) {
+    rgb_matrix_set_color( 31 , 0  , 60 , 125);
+    rgb_matrix_set_color( 63 , 125, 40 , 0  );
   }
 
   if (nav) {
     //Left side
-    rgb_matrix_set_color( 9  , 125, 30 , 125);
-    rgb_matrix_set_color( 13 , 125, 30 , 125);
-    rgb_matrix_set_color( 14 , 125, 30 , 125);
-    rgb_matrix_set_color( 15 , 125, 30 , 125);
-    rgb_matrix_set_color( 20 , 125, 30 , 125);
-    rgb_matrix_set_color( 21 , 125, 30 , 125);
-    rgb_matrix_set_color( 26 , 125, 30 , 125);
-    rgb_matrix_set_color( 27 , 125, 30 , 125);
+    rgb_matrix_set_color( 9  , 30 , 30 , 125);
+    rgb_matrix_set_color( 13 , 30 , 30 , 125);
+    rgb_matrix_set_color( 14 , 30 , 30 , 125);
+    rgb_matrix_set_color( 15 , 30 , 30 , 125);
+    rgb_matrix_set_color( 20 , 30 , 30 , 125);
+    rgb_matrix_set_color( 21 , 30 , 30 , 125);
+    rgb_matrix_set_color( 26 , 30 , 30 , 125);
+    rgb_matrix_set_color( 27 , 30 , 30 , 125);
     //Right side
-    rgb_matrix_set_color( 41 , 125, 30 , 125);
-    rgb_matrix_set_color( 45 , 125, 30 , 125);
-    rgb_matrix_set_color( 46 , 125, 30 , 125);
-    rgb_matrix_set_color( 47 , 125, 30 , 125);
-    rgb_matrix_set_color( 52 , 125, 30 , 125);
-    rgb_matrix_set_color( 53 , 125, 30 , 125);
-    rgb_matrix_set_color( 58 , 125, 30 , 125);
-    rgb_matrix_set_color( 59 , 125, 30 , 125);
+    rgb_matrix_set_color( 41 , 30 , 30 , 125);
+    rgb_matrix_set_color( 45 , 30 , 30 , 125);
+    rgb_matrix_set_color( 46 , 30 , 30 , 125);
+    rgb_matrix_set_color( 47 , 30 , 30 , 125);
+    rgb_matrix_set_color( 52 , 30 , 30 , 125);
+    rgb_matrix_set_color( 53 , 30 , 30 , 125);
+    rgb_matrix_set_color( 58 , 30 , 30 , 125);
+    rgb_matrix_set_color( 59 , 30 , 30 , 125);
   }
 }
 
@@ -46,56 +53,17 @@ void led_set_user(uint8_t usb_led) {
   }
 }
 
-uint32_t layer_state_set_user(uint32_t state) {
+layer_state_t layer_state_set_rgb(uint32_t state) {
   layer = biton32(state);
-    switch (layer) {
-      case _RAISE:
-        rgb_matrix_config.hsv.h = 19;
-        rgb_matrix_config.hsv.s = 255;
-        rgb_matrix_config.hsv.v = 125;
-        rgb_matrix_config.speed = 255;
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_BREATHING);
+  switch (layer) {
+    case _QWERTY:
+      rgb_matrix_config.hsv.h = rgbset.hsv.h;
+      break;
+    #ifdef GAME_MODE
+      case _GAME:
+        rgb_matrix_config.hsv.h = rgbset.hsv.h+63;                          // Rotates current colors 90 degrees
         break;
-      case _LOWER:
-        rgb_matrix_config.hsv.h = 147;
-        rgb_matrix_config.hsv.s = 240;
-        rgb_matrix_config.hsv.v = 125;
-        rgb_matrix_config.speed = 255;
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_BREATHING);
-        break;
-      case _QWERTY:
-        if (ashift) {
-          if (!ctxt && !wtxt.on) {
-            autoshift_enable();
-          } else if (ctxt || wtxt.on) {
-            autoshift_disable();
-          }
-        }
-        rgb_matrix_config.hsv.h = rgbset.hsv.h;
-        rgb_matrix_config.hsv.s = rgbset.hsv.s;
-        rgb_matrix_config.hsv.v = rgbset.hsv.v;
-        rgb_matrix_config.speed = rgbset.speed;
-        rgb_matrix_mode_noeeprom(rgbset.mode);
-        break;
-      #ifdef GAME_MODE
-        case _GAME:
-          autoshift_disable();
-          rgb_matrix_config.hsv.h = 183;
-          rgb_matrix_config.hsv.s = 255;
-          rgb_matrix_config.hsv.v = 125;
-          rgb_matrix_config.speed = 65;
-          rgb_matrix_mode_noeeprom(RGB_MATRIX_GRADIENT_UP_DOWN);
-          break;
-      #endif
-      case _NAV:
-        break;
-      case _RGBL:
-        rgb_matrix_config.hsv.h = rgbset.hsv.h;
-        rgb_matrix_config.hsv.s = rgbset.hsv.s;
-        rgb_matrix_config.hsv.v = rgbset.hsv.v;
-        rgb_matrix_config.speed = rgbset.speed;
-        rgb_matrix_mode_noeeprom(rgbset.mode);
-        break;
-    }
-  return state;
+    #endif
+  }
+  return layer_state_set_keymap(state);
 }
