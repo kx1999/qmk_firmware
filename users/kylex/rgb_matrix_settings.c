@@ -61,7 +61,7 @@ layer_state_t layer_state_set_rgb(uint32_t state) {
       break;
     #ifdef GAME_MODE
       case _GAME:
-        rgb_matrix_config.hsv.h = rgbset.hsv.h+63;                          // Rotates current colors 90 degrees
+        rgb_matrix_config.hsv.h = rgbset.hsv.h+110;                          // Rotates current colors 90 degrees
         break;
     #endif
   }
