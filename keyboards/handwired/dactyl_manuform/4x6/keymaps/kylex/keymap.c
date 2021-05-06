@@ -3,7 +3,6 @@
 #include QMK_KEYBOARD_H
 #include "kylex.h"
 extern keymap_config_t keymap_config;
-static uint8_t layer = _COLEMAK;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
