@@ -15,8 +15,8 @@ bool ctxt;
 const uint8_t repeat;
 
 enum global_layers {
-	_QWERTY,
 	_COLEMAK,
+	_QWERTY,
 	_DVORAK,
 	_GAMETEST,
 	_GAME,

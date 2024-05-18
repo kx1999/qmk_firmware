@@ -30,4 +30,4 @@ TAP_DANCE_MACROS = yes            # Includes custom macros
 GAME_MODE = yes					  # Enables _GAME layer
 NUMPAD_LAYER = no 				  # Enables _NUMP layer
 
-BOOTLOADER = qmk-dfu              	  # Defines bootloader
+BOOTLOADER = atmel-dfu              	  # Defines bootloader
