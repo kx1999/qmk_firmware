@@ -1,6 +1,6 @@
 #include "kylex.h"
 
-int TAP_CODE_DELAY = 0;
+//int TAP_CODE_DELAY = 0;
 bool ashift = true;
 #ifdef RGB_MATRIX_ENABLE
 rgb_config_t rgbset;
@@ -96,7 +96,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else if (ctxt || wtxt.on) {
               autoshift_disable();
             }
-          }  
+          }
         } else {
           autoshift_disable();
         }
@@ -116,7 +116,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else if (ctxt || wtxt.on) {
               autoshift_disable();
             }
-          }  
+          }
         } else {
           autoshift_disable();
         }
@@ -185,10 +185,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_NEXD:
       if (record->event.pressed) {
         register_code(KC_LGUI);
-        register_code(KC_LCTRL);
+        register_code(KC_LCTL);
         register_code(KC_RIGHT);
         unregister_code(KC_LGUI);
-        unregister_code(KC_LCTRL);
+        unregister_code(KC_LCTL);
         unregister_code(KC_RIGHT);
       }
       return false;
@@ -196,10 +196,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_PRED:
       if (record->event.pressed) {
         register_code(KC_LGUI);
-        register_code(KC_LCTRL);
+        register_code(KC_LCTL);
         register_code(KC_LEFT);
         unregister_code(KC_LGUI);
-        unregister_code(KC_LCTRL);
+        unregister_code(KC_LCTL);
         unregister_code(KC_LEFT);
       }
       return false;
@@ -207,10 +207,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_NEWD:
       if (record->event.pressed) {
         register_code(KC_LGUI);
-        register_code(KC_LCTRL);
+        register_code(KC_LCTL);
         register_code(KC_D);
         unregister_code(KC_LGUI);
-        unregister_code(KC_LCTRL);
+        unregister_code(KC_LCTL);
         unregister_code(KC_D);
       }
       return false;
@@ -218,15 +218,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_CLOD:
       if (record->event.pressed) {
         register_code(KC_LGUI);
-        register_code(KC_LCTRL);
+        register_code(KC_LCTL);
         register_code(KC_F4);
         unregister_code(KC_LGUI);
-        unregister_code(KC_LCTRL);
+        unregister_code(KC_LCTL);
         unregister_code(KC_F4);
       }
       return false;
       break;
-    case KC_ASTG:
+    case AS_TOGG:
       if (record->event.pressed) {
         ashift = !ashift;
       }

@@ -23,7 +23,7 @@ enum global_keycodes {
 #define KC_____		KC_NO
 #define KC_BACK     KC_WBAK                                                                                                    // Back
 #define KC_FRWD     KC_WFWD                                                                                                    // Forward
-#define KC_CSFT     SFT_T(KC_CAPSLOCK)                                                                                         // Hold for Shift, tap for Caps Lock
+#define KC_CSFT     SFT_T(KC_CAPS_LOCK)                                                                                         // Hold for Shift, tap for Caps Lock
 #define KC_CESC     CTL_T(KC_ESC)                                                                                              // Hold for Ctrl, tap for Esc
 
 #define KC_LOWR     MO(_LOWER)                                                                                                 // Tap toggle _LOWER layer

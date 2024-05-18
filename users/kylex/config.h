@@ -12,6 +12,7 @@
 #define FORCE_NKRO
 #undef TAP_HOLD_CAPS_DELAY
 #define TAP_HOLD_CAPS_DELAY 0
+//#define TAP_CODE_DELAY 0
 
 #define AUTO_SHIFT_TIMEOUT 120
 

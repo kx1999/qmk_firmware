@@ -26,9 +26,9 @@ enum global_layers {
 	_NUMPAD,
 	_NAV,
 };
-layer_state_t layer_state_set_keymap(uint32_t state);
-layer_state_t layer_state_set_rgb(uint32_t state);
-layer_state_t layer_state_set_user(uint32_t state);
+layer_state_t layer_state_set_keymap(layer_state_t state);
+layer_state_t layer_state_set_rgb(layer_state_t state);
+layer_state_t layer_state_set_user(layer_state_t state);
 void rgblight_wait(void);
 void rgblight_init_real(void);
 void matrix_init_user(void);
