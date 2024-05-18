@@ -11,7 +11,7 @@ extern struct {
   bool first;
 } wtxt;
 
-void rgb_matrix_indicators_user(void) {
+bool rgb_matrix_indicators_user(void) {
   if (!ctxt) {
     if (caps) {
       rgb_matrix_set_color( 18 , 125, 0  , 0  );
@@ -43,17 +43,27 @@ void rgb_matrix_indicators_user(void) {
     rgb_matrix_set_color( 58 , 30 , 30 , 125);
     rgb_matrix_set_color( 59 , 30 , 30 , 125);
   }
+  return true;
 }
 
-void led_set_user(uint8_t usb_led) {
+/*void led_set_user(uint8_t usb_led) {
   if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
     caps = true;
   } else {
     caps = false;
   }
+} */
+
+bool led_update_user(led_t led_state) {
+    static uint8_t caps_state = 0;
+    if (caps_state != led_state.caps_lock) {
+        led_state.caps_lock ? (caps = true) : (caps = false);
+        caps_state = led_state.caps_lock;
+    }
+    return true;
 }
 
-layer_state_t layer_state_set_rgb(uint32_t state) {
+layer_state_t layer_state_set_rgb(layer_state_t state) {
   layer = biton32(state);
   switch (layer) {
     case _QWERTY:

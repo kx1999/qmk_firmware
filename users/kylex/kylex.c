@@ -24,16 +24,16 @@ void matrix_init_user(void) {
 };
 
 __attribute__ ((weak))
-layer_state_t layer_state_set_keymap(uint32_t state) {
+layer_state_t layer_state_set_keymap(layer_state_t state) {
   return state;
 }
 
 __attribute__ ((weak))
-layer_state_t layer_state_set_rgb(uint32_t state) {
+layer_state_t layer_state_set_rgb(layer_state_t state) {
   return layer_state_set_keymap(state);
 }
 
-layer_state_t layer_state_set_user(uint32_t state) {
+layer_state_t layer_state_set_user(layer_state_t state) {
   state = update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
   return layer_state_set_rgb(state);
 }

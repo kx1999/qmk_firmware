@@ -22,12 +22,12 @@ FAUXCLICKY_ENABLE = no
 API_SYSEX_ENABLE = no
 KEY_LOCK_ENABLE = no
 
-RGB_MATRIX_ENABLE = yes 		  # WS2812
-RGB_MATRIX_DRIVER = WS2812
+RGB_MATRIX_ENABLE = yes 		  # ws2812
+RGB_MATRIX_DRIVER = ws2812
 
 KYLEX_SONGS = no                  # Includes copyrighted songs
 TAP_DANCE_MACROS = yes            # Includes custom macros
 GAME_MODE = yes					  # Enables _GAME layer
 NUMPAD_LAYER = no 				  # Enables _NUMP layer
 
-BOOTLOADER = dfu              	  # Defines bootloader
+BOOTLOADER = qmk-dfu              	  # Defines bootloader
