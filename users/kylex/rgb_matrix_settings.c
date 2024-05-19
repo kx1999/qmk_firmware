@@ -1,6 +1,6 @@
 #include "kylex.h"
 
-static uint8_t layer = _QWERTY;
+static uint8_t layer = _COLEMAK;
 extern rgb_config_t rgbset;
 extern bool nav;
 extern bool game;
@@ -46,14 +46,6 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-/*void led_set_user(uint8_t usb_led) {
-  if (IS_LED_ON(usb_led, USB_LED_CAPS_LOCK)) {
-    caps = true;
-  } else {
-    caps = false;
-  }
-} */
-
 bool led_update_user(led_t led_state) {
     static uint8_t caps_state = 0;
     if (caps_state != led_state.caps_lock) {
@@ -66,12 +58,12 @@ bool led_update_user(led_t led_state) {
 layer_state_t layer_state_set_rgb(layer_state_t state) {
   layer = biton32(state);
   switch (layer) {
-    case _QWERTY:
+    case _COLEMAK:
       rgb_matrix_config.hsv.h = rgbset.hsv.h;
       break;
     #ifdef GAME_MODE
       case _GAME:
-        rgb_matrix_config.hsv.h = rgbset.hsv.h+110;                          // Rotates current colors 90 degrees
+        rgb_matrix_config.hsv.v = rgbset.hsv.v;                          // Changes current colors
         break;
     #endif
   }
