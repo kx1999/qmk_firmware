@@ -63,7 +63,7 @@ layer_state_t layer_state_set_rgb(layer_state_t state) {
       break;
     #ifdef GAME_MODE
       case _GAME:
-        rgb_matrix_config.hsv.v = rgbset.hsv.v;                          // Changes current colors
+        rgb_matrix_config.hsv.h = rgbset.hsv.h+180;                          // Changes current colors
         break;
     #endif
   }
