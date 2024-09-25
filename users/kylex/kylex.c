@@ -45,12 +45,12 @@ void matrix_scan_user(void) {
   if (up) {
     register_code(KC_UP);
     unregister_code(KC_UP);
-    _delay_ms(repeat);
+    wait_ms(repeat);
   }
   if (dn) {
     register_code(KC_DOWN);
     unregister_code(KC_DOWN);
-    _delay_ms(repeat);
+    wait_ms(repeat);
   }
   matrix_scan_keymap();
 }
