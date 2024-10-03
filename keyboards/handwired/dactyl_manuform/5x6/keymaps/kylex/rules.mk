@@ -22,7 +22,7 @@ FAUXCLICKY_ENABLE = no
 API_SYSEX_ENABLE = no
 KEY_LOCK_ENABLE = no
 
-RGB_MATRIX_ENABLE = yes 		  # ws2812
+RGB_MATRIX_ENABLE = no 		  # ws2812
 RGB_MATRIX_DRIVER = ws2812
 
 KYLEX_SONGS = no                  # Includes copyrighted songs
