@@ -159,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //+-------+-------+-------+-------+-------+-------+                       +-------+-------+-------+-------+-------+-------+
      XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                        XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
   //|-------+-------+-------+-------+-------+-------|						|-------+-------+-------+-------+-------+-------|
-     XXXXXXX,XXXXXXX,KC_CTXT,KC_WTXT,AS_TOGG,AC_TOGG,                        XXXXXXX,KC_QWER,KC_COLE,KC_DVOR,XXXXXXX,XXXXXXX,
+     XXXXXXX,XXXXXXX,KC_CTXT,KC_WTXT,AS_TOGG,XXXXXXX,                        XXXXXXX,KC_QWER,KC_COLE,KC_DVOR,XXXXXXX,XXXXXXX,
   //|-------+-------+-------+-------+-------+-------|						|-------+-------+-------+-------+-------+-------|
      XXXXXXX,KC_RTOG,KC_RHUI,KC_RSAI,KC_RVAI,KC_RSPI,                        XXXXXXX,KC_MAKE,XXXXXXX,XXXXXXX,QK_BOOT,XXXXXXX,
   //|-------+-------+-------+-------+-------+-------|						|-------+-------+-------+-------+-------+-------|
@@ -185,7 +185,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|-------+-------+-------+-------+-------+-------|						|-------+-------+-------+-------+-------+-------|
      _______,_______,KC_LEFT,KC_DOWN,KC_RGHT,_______,                        _______,_______,_______,_______,_______,_______,
   //|-------+-------+-------+-------+-------+-------|						|-------+-------+-------+-------+-------+-------|
-     _______,_______,KC_PRED,KC_NEXD,_______,_______,                        _______,_______,_______,_______,_______,_______,
+     _______,_______,KC_PRED,KC_NEXD,CW_TOGG,_______,                        _______,_______,_______,_______,_______,_______,
   //+-------+-------+-------+-------+-------+-------+                       +-------+-------+-------+-------+-------+-------+
                      KC_CLOD,KC_NEWD,                                                        _______,_______,
   //                +-------+-------+                                                       +-------+-------+
@@ -261,7 +261,7 @@ void hyp_f (tap_dance_state_t *state, void *user_data) {
       register_code(KC_LGUI);
       break;
     case DOUBLE_TAP:
-      caps_word_on();
+      autocorrect_toggle();
       break;
     case TRIPLE_TAP:
       register_code(KC_SLEP);
