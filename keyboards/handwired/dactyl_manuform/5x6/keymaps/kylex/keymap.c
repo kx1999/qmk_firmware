@@ -159,7 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //+-------+-------+-------+-------+-------+-------+                       +-------+-------+-------+-------+-------+-------+
      XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,                        XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,XXXXXXX,
   //|-------+-------+-------+-------+-------+-------|						|-------+-------+-------+-------+-------+-------|
-     XXXXXXX,XXXXXXX,KC_CTXT,KC_WTXT,AS_TOGG,XXXXXXX,                        XXXXXXX,KC_QWER,KC_COLE,KC_DVOR,XXXXXXX,XXXXXXX,
+     XXXXXXX,XXXXXXX,KC_CTXT,KC_WTXT,AS_TOGG,AC_TOGG,                        XXXXXXX,KC_QWER,KC_COLE,KC_DVOR,XXXXXXX,XXXXXXX,
   //|-------+-------+-------+-------+-------+-------|						|-------+-------+-------+-------+-------+-------|
      XXXXXXX,KC_RTOG,KC_RHUI,KC_RSAI,KC_RVAI,KC_RSPI,                        XXXXXXX,KC_MAKE,XXXXXXX,XXXXXXX,QK_BOOT,XXXXXXX,
   //|-------+-------+-------+-------+-------+-------|						|-------+-------+-------+-------+-------+-------|
@@ -261,12 +261,7 @@ void hyp_f (tap_dance_state_t *state, void *user_data) {
       register_code(KC_LGUI);
       break;
     case DOUBLE_TAP:
-      register_code(KC_LSFT);
-      register_code(KC_LCTL);
-      register_code(KC_ESC);
-      unregister_code(KC_LSFT);
-      unregister_code(KC_LCTL);
-      unregister_code(KC_ESC);
+      caps_word_on();
       break;
     case TRIPLE_TAP:
       register_code(KC_SLEP);
@@ -292,32 +287,23 @@ void dsc_f (tap_dance_state_t *state, void *user_data) {
     case SINGLE_TAP:
       register_code(KC_LSFT);
       register_code(KC_LCTL);
-      //register_code(KC_LALT);
-      //register_code(KC_LGUI);
       register_code(KC_M);
+      unregister_code(KC_M);
       unregister_code(KC_LSFT);
       unregister_code(KC_LCTL);
-      //unregister_code(KC_LALT);
-      //unregister_code(KC_LGUI);
-      unregister_code(KC_M);
       break;
     case SINGLE_HOLD:
       register_code(KC_LSFT);
-      //register_code(KC_LCTL);
       register_code(KC_LALT);
       register_code(KC_LGUI);
       break;
     case DOUBLE_TAP:
       register_code(KC_LSFT);
       register_code(KC_LCTL);
-      //register_code(KC_LALT);
-      //register_code(KC_LGUI);
       register_code(KC_D);
+      unregister_code(KC_D);
       unregister_code(KC_LSFT);
       unregister_code(KC_LCTL);
-      //unregister_code(KC_LALT);
-      //unregister_code(KC_LGUI);
-      unregister_code(KC_D);
       break;
   }
 }
@@ -326,7 +312,6 @@ void dsc_r (tap_dance_state_t *state, void *user_data) {
   switch (tap_state.state) {
     case SINGLE_HOLD:
       unregister_code(KC_LSFT);
-      //unregister_code(KC_LCTL);
       unregister_code(KC_LALT);
       unregister_code(KC_LGUI);
       break;
