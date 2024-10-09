@@ -90,3 +90,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	//#define ENABLE_RGB_MATRIX_SOLID_SPLASH
 	#define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
+
+#ifdef MOUSEKEY_ENABLE
+    #define KC_BACK     QK_MOUSE_BUTTON_4
+    #define KC_FRWD     QK_MOUSE_BUTTON_5
+#else
+    #define KC_BACK     KC_WBAK
+    #define KC_FRWD     KC_WFWD
+#endif
+

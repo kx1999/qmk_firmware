@@ -3,9 +3,6 @@ SRC += kylex.c \
 
 LTO_ENABLE = yes
 
-ifeq ($(strip $(TAP_DANCE_ENABLE)), yes)
-	SRC += tap_dance_macros.c
-endif
 ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
 	SRC += rgb_underglow.c
 endif

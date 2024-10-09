@@ -21,8 +21,8 @@ enum global_keycodes {
 
 #define KC_LCA0     LCA(KC_0)                                                                                                   // Left Control + Alt + 0 ==== OBS Save Replay Buffer
 #define KC_LCA9     LCA(KC_9)                                                                                                   // Left Control + Alt + 9 ==== OBS Toggle Recording
-#define KC_BACK     KC_WBAK                                                                                                     // Back
-#define KC_FRWD     KC_WFWD                                                                                                     // Forward
+//#define KC_BACK     KC_WBAK                                                                                                     // Back
+//#define KC_FRWD     KC_WFWD                                                                                                     // Forward
 #define KC_CSFT     SFT_T(KC_CAPS_LOCK)                                                                                         // Hold for Shift, tap for Caps Lock
 #define KC_CESC     CTL_T(KC_ESC)                                                                                               // Hold for Ctrl, tap for Esc
 
