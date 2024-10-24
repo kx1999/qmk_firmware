@@ -1,10 +1,10 @@
 #include "kylex.h"
 
-bool up = false;
-bool dn = false;
+//bool up = false;
+//bool dn = false;
 bool caps = false;
 bool ctxt = false;
-const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
+//const uint8_t repeat = 5;                                                                                                      // Time between auto-repeated keystrokes (ms)
 //static uint8_t layer = _QWERTY;
 #ifdef RGB_MATRIX_ENABLE
 extern rgb_config_t rgbset;
@@ -41,7 +41,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 __attribute__ ((weak))
 void matrix_scan_keymap(void) {}
 
-void matrix_scan_user(void) {
+/*void matrix_scan_user(void) {
   if (up) {
     register_code(KC_UP);
     unregister_code(KC_UP);
@@ -53,7 +53,7 @@ void matrix_scan_user(void) {
     wait_ms(repeat);
   }
   matrix_scan_keymap();
-}
+}*/
 
 void suspend_power_down_kb(void)
 {

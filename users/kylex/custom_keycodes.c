@@ -127,7 +127,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return true;
       break;
-    case KC_SUP:
+/*    case KC_SUP:
       if (record->event.pressed) {
         up = true;
       } else {
@@ -142,7 +142,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         dn = false;
       }
       return false;
-      break;
+      break;*/
     case KC_WTXT:
       if (record->event.pressed) {
         wtxt.on = !wtxt.on;

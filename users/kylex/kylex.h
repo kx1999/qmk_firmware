@@ -8,11 +8,11 @@
 #include "tap_dance_macros.h"
 #endif
 
-bool up;
-bool dn;
+//bool up;
+//bool dn;
 bool caps;
 bool ctxt;
-const uint8_t repeat;
+//const uint8_t repeat;
 
 enum global_layers {
 	_COLEMAK,
