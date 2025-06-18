@@ -20,17 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define USE_SERIAL
 
+// mousekey speed
 #define MK_3_SPEED
 
-//#define MASTER_LEFT
-//#define MASTER_RIGHT
 #define EE_HANDS
-// Rows are doubled-up
 
-//#undef MATRIX_COL_PINS
-//#undef MATRIX_ROW_PINS
-//#define MATRIX_COL_PINS { D4, C6, D7, B7, B4, B5 }
-//#define MATRIX_ROW_PINS { F6, F7, B1, B3, B2, B6 }
+#define FLOW_TAP_TERM 150
 
 #ifdef RGB_MATRIX_ENABLE
 	#undef RGB_MATRIX_LED_COUNT
